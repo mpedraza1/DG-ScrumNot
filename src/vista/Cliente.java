@@ -65,6 +65,7 @@ public class Cliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DreamGifts");
 
+        jPanel1.setBackground(new java.awt.Color(102, 0, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(650, 550));
 
         nombreCliente.setForeground(new java.awt.Color(102, 102, 102));
@@ -243,8 +244,8 @@ public class Cliente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(231, 231, 231)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(138, 138, 138)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -355,145 +356,18 @@ public class Cliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 662, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void redesSocialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redesSocialesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_redesSocialesActionPerformed
-
-    private void correoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoElectronicoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_correoElectronicoActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        String []Datos= new String[6];
-        Datos[0]=nombreCliente.getText();
-        nombreCliente.setText("");
-        Datos[1]=jTextField1.getText();
-        jTextField1.setText("");
-        Datos[2]=numeroCelular.getText();
-        numeroCelular.setText("");
-        Datos[3]=numeroTelefono.getText();
-        numeroTelefono.setText("");
-        Datos[4]=correoElectronico.getText();
-        correoElectronico.setText("");
-        Datos[5]=redesSociales.getText();
-        redesSociales.setText("");
-        modelo.addRow(Datos);
-    }//GEN-LAST:event_jButton1MouseClicked
-
-    private void botonDesactivarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonDesactivarMouseClicked
-        int fila=jTable2.getSelectedRow();
-        if(fila>=0){
-            modelo.removeRow(fila);
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Seleccionar fila");
-        }
-    }//GEN-LAST:event_botonDesactivarMouseClicked
-
-    private void nombreClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreClienteFocusGained
-        
-        
-        if(nombreCliente.getText().equals("Nombre Cliente")){
-            nombreCliente.setText("");
-        }
-    }//GEN-LAST:event_nombreClienteFocusGained
-
-    private void nombreClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreClienteFocusLost
-        // TODO add your handling code here:
-        if(nombreCliente.getText().equals("")){
-            nombreCliente.setText("Nombre Cliente");
-        }
-        nombreCliente.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_nombreClienteFocusLost
-
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        // TODO add your handling code here:
-        if(jTextField1.getText().equals("")){
-            jTextField1.setText("Rut Cliente");
-        }
-        jTextField1.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_jTextField1FocusLost
-
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-        // TODO add your handling code here:
-        if(jTextField1.getText().equals("Rut Cliente")){
-            jTextField1.setText("");
-        }
-    }//GEN-LAST:event_jTextField1FocusGained
-
-    private void numeroCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroCelularFocusGained
-        // TODO add your handling code here:
-        if(numeroCelular.getText().equals("Celular")){
-            numeroCelular.setText("");
-        }
-    }//GEN-LAST:event_numeroCelularFocusGained
-
-    private void numeroCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroCelularFocusLost
-        // TODO add your handling code here:
-        if(numeroCelular.getText().equals("")){
-            numeroCelular.setText("Celular");
-        }
-        numeroCelular.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_numeroCelularFocusLost
-
-    private void numeroTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroTelefonoFocusGained
-        // TODO add your handling code here:
-        if(numeroTelefono.getText().equals("Telefono")){
-            numeroTelefono.setText("");
-        }
-    }//GEN-LAST:event_numeroTelefonoFocusGained
-
-    private void numeroTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroTelefonoFocusLost
-        // TODO add your handling code here:
-        if(numeroTelefono.getText().equals("")){
-            numeroTelefono.setText("Telefono");
-        }
-        numeroTelefono.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_numeroTelefonoFocusLost
-
-    private void correoElectronicoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_correoElectronicoFocusLost
-        // TODO add your handling code here:
-        if(correoElectronico.getText().equals("")){
-            correoElectronico.setText("Correo");
-        }
-        correoElectronico.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_correoElectronicoFocusLost
-
-    private void correoElectronicoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_correoElectronicoFocusGained
-        // TODO add your handling code here:
-        if(correoElectronico.getText().equals("Correo")){
-            correoElectronico.setText("");
-        }
-    }//GEN-LAST:event_correoElectronicoFocusGained
-
-    private void redesSocialesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_redesSocialesFocusGained
-        // TODO add your handling code here:
-        if(redesSociales.getText().equals("Redes Sociales")){
-            redesSociales.setText("");
-        }
-    }//GEN-LAST:event_redesSocialesFocusGained
-
-    private void redesSocialesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_redesSocialesFocusLost
-        // TODO add your handling code here:
-        if(redesSociales.getText().equals("")){
-            redesSociales.setText("Redes Sociales");
-        }
-        redesSociales.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_redesSocialesFocusLost
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
@@ -571,6 +445,131 @@ public class Cliente extends javax.swing.JFrame {
         informes.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        String []Datos= new String[6];
+        Datos[0]=nombreCliente.getText();
+        nombreCliente.setText("");
+        Datos[1]=jTextField1.getText();
+        jTextField1.setText("");
+        Datos[2]=numeroCelular.getText();
+        numeroCelular.setText("");
+        Datos[3]=numeroTelefono.getText();
+        numeroTelefono.setText("");
+        Datos[4]=correoElectronico.getText();
+        correoElectronico.setText("");
+        Datos[5]=redesSociales.getText();
+        redesSociales.setText("");
+        modelo.addRow(Datos);
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void botonDesactivarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonDesactivarMouseClicked
+        int fila=jTable2.getSelectedRow();
+        if(fila>=0){
+            modelo.removeRow(fila);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Seleccionar fila");
+        }
+    }//GEN-LAST:event_botonDesactivarMouseClicked
+
+    private void redesSocialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redesSocialesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_redesSocialesActionPerformed
+
+    private void redesSocialesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_redesSocialesFocusLost
+        // TODO add your handling code here:
+        if(redesSociales.getText().equals("")){
+            redesSociales.setText("Redes Sociales");
+        }
+        redesSociales.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_redesSocialesFocusLost
+
+    private void redesSocialesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_redesSocialesFocusGained
+        // TODO add your handling code here:
+        if(redesSociales.getText().equals("Redes Sociales")){
+            redesSociales.setText("");
+        }
+    }//GEN-LAST:event_redesSocialesFocusGained
+
+    private void correoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoElectronicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_correoElectronicoActionPerformed
+
+    private void correoElectronicoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_correoElectronicoFocusLost
+        // TODO add your handling code here:
+        if(correoElectronico.getText().equals("")){
+            correoElectronico.setText("Correo");
+        }
+        correoElectronico.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_correoElectronicoFocusLost
+
+    private void correoElectronicoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_correoElectronicoFocusGained
+        // TODO add your handling code here:
+        if(correoElectronico.getText().equals("Correo")){
+            correoElectronico.setText("");
+        }
+    }//GEN-LAST:event_correoElectronicoFocusGained
+
+    private void numeroCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroCelularFocusLost
+        // TODO add your handling code here:
+        if(numeroCelular.getText().equals("")){
+            numeroCelular.setText("Celular");
+        }
+        numeroCelular.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_numeroCelularFocusLost
+
+    private void numeroCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroCelularFocusGained
+        // TODO add your handling code here:
+        if(numeroCelular.getText().equals("Celular")){
+            numeroCelular.setText("");
+        }
+    }//GEN-LAST:event_numeroCelularFocusGained
+
+    private void numeroTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroTelefonoFocusLost
+        // TODO add your handling code here:
+        if(numeroTelefono.getText().equals("")){
+            numeroTelefono.setText("Telefono");
+        }
+        numeroTelefono.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_numeroTelefonoFocusLost
+
+    private void numeroTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroTelefonoFocusGained
+        // TODO add your handling code here:
+        if(numeroTelefono.getText().equals("Telefono")){
+            numeroTelefono.setText("");
+        }
+    }//GEN-LAST:event_numeroTelefonoFocusGained
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        // TODO add your handling code here:
+        if(jTextField1.getText().equals("")){
+            jTextField1.setText("Rut Cliente");
+        }
+        jTextField1.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_jTextField1FocusLost
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        // TODO add your handling code here:
+        if(jTextField1.getText().equals("Rut Cliente")){
+            jTextField1.setText("");
+        }
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void nombreClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreClienteFocusLost
+        // TODO add your handling code here:
+        if(nombreCliente.getText().equals("")){
+            nombreCliente.setText("Nombre Cliente");
+        }
+        nombreCliente.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_nombreClienteFocusLost
+
+    private void nombreClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreClienteFocusGained
+
+        if(nombreCliente.getText().equals("Nombre Cliente")){
+            nombreCliente.setText("");
+        }
+    }//GEN-LAST:event_nombreClienteFocusGained
 
     /*
      * @param args the command line arguments

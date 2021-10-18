@@ -70,6 +70,8 @@ public class RedesSociales extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DreamGifts");
 
+        jPanel1.setBackground(new java.awt.Color(102, 0, 0));
+
         txtbuscar.setForeground(new java.awt.Color(102, 102, 102));
         txtbuscar.setText("Buscar");
         txtbuscar.addFocusListener(new java.awt.event.FocusAdapter() {

@@ -16,6 +16,7 @@ DefaultTableModel modelo = new DefaultTableModel();
      */
     public Articulo() {
         initComponents();
+        this.setLocationRelativeTo(null);
         modelo.addColumn("Marca");
         modelo.addColumn("Codigo");
         modelo.addColumn("Cantidad");
@@ -222,7 +223,7 @@ DefaultTableModel modelo = new DefaultTableModel();
             }
         });
 
-        JCEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1" }));
+        JCEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "0" }));
         JCEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JCEstadoActionPerformed(evt);

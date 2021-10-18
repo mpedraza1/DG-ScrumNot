@@ -16,6 +16,7 @@ public class Despacho extends javax.swing.JFrame {
      */
     public Despacho() {
         initComponents();
+        this.setLocationRelativeTo(null);
         modelo = new DefaultTableModel();
         modelo.addColumn ("Nombre Cliente");
         modelo.addColumn ("Rut Cliente");

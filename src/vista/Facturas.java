@@ -10,6 +10,7 @@ public class Facturas extends javax.swing.JFrame {
     
     public Facturas() {
         initComponents();
+        this.setLocationRelativeTo(null);
         modelo = new DefaultTableModel();
         modelo.addColumn ("Orden de Compra");
         modelo.addColumn ("Nombre articulo");

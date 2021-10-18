@@ -15,6 +15,7 @@ public class CategoriaArt extends javax.swing.JFrame {
      */
     public CategoriaArt() {
         initComponents();
+        this.setLocationRelativeTo(null);
         modelo = new DefaultTableModel();
         modelo.addColumn("categoria articulo");
         modelo.addColumn("estado");

@@ -18,6 +18,7 @@ public class RedesSociales extends javax.swing.JFrame {
      */
     public RedesSociales() {
         initComponents();
+        this.setLocationRelativeTo(null);
         modelo = new DefaultTableModel();
         modelo.addColumn ("ID RRSS");
         modelo.addColumn ("Nombre Red Social");

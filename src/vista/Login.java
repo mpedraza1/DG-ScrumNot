@@ -12,6 +12,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -48,6 +49,8 @@ public class Login extends javax.swing.JFrame {
         imagenDg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Imagen DG.jpg"))); // NOI18N
         imagenDg.setText("jLabel1");
 
+        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         botonIngresar.setText("Ingresar");
         botonIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +58,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        loginUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         loginUser.setText("Usuario");
         loginUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +114,9 @@ public class Login extends javax.swing.JFrame {
 
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
         Controlador.LoginController.eventoBotonIngresar();
+        Articulo articulo = new Articulo();
+        articulo.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonIngresarActionPerformed
 
     private void loginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginUserActionPerformed

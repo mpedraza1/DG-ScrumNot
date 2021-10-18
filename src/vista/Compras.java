@@ -12,6 +12,7 @@ public class Compras extends javax.swing.JFrame {
      */
     public Compras() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

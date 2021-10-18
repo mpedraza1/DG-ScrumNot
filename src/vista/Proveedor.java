@@ -14,6 +14,7 @@ public class Proveedor extends javax.swing.JFrame {
      */
     public Proveedor() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

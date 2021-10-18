@@ -12,6 +12,7 @@ public class Comunas extends javax.swing.JFrame {
     
     public Comunas() {
         initComponents();
+        this.setLocationRelativeTo(null);
         modelo = new DefaultTableModel();
         modelo.addColumn ("nombre comuna");
         modelo.addColumn ("comuna region");

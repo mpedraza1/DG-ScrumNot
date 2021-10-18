@@ -13,6 +13,7 @@ public class Cliente extends javax.swing.JFrame {
     
     public Cliente() {
         initComponents();
+        this.setLocationRelativeTo(null);
         modelo = new DefaultTableModel();
         modelo.addColumn ("Nombre Cliente");
         modelo.addColumn ("Rut Cliente");

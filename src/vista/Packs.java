@@ -15,6 +15,7 @@ public class Packs extends javax.swing.JFrame {
      */
     public Packs() {
         initComponents();
+        this.setLocationRelativeTo(null);
         modelo = new DefaultTableModel();
         modelo.addColumn ("Pack");
         modelo.addColumn ("codigo pack");

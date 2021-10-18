@@ -15,11 +15,12 @@ public class Facturas extends javax.swing.JFrame {
         modelo.addColumn ("Orden de Compra");
         modelo.addColumn ("Nombre articulo");
         modelo.addColumn ("Codigo articulo");
-        modelo.addColumn ("cantidad");
-        modelo.addColumn ("marca");
-        modelo.addColumn ("descripcion");
-        modelo.addColumn ("categoria");
-        modelo.addColumn ("proveedor");
+        modelo.addColumn ("Cantidad");
+        modelo.addColumn ("Marca");
+        modelo.addColumn ("Descripcion");
+        modelo.addColumn ("Categoria");
+        modelo.addColumn ("Proveedor");
+        modelo.addColumn ("F. Vencimiento");
         this.jTable1.setModel(modelo);
     }
 
@@ -491,21 +492,21 @@ public class Facturas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        String []Datos= new String[4];
+        String []Datos= new String[10];
         Datos[0]=jTextField1.getText();
         jTextField1.setText("");
         Datos[1]=jTextField2.getText();
         jTextField2.setText("");
-        Datos[0]=jTextField3.getText();
+        Datos[2]=jTextField3.getText();
         jTextField3.setText("");
-        Datos[1]=jTextField4.getText();
+        Datos[3]=jTextField4.getText();
         jTextField4.setText("");
-        Datos[1]=jTextField5.getText();
+        Datos[4]=jTextField5.getText();
         jTextField5.setText("");
-        Datos[1]=jTextField6.getText();
+        Datos[5]=jTextField6.getText();
         jTextField6.setText("");
-        Datos[2]=jComboBox1.getSelectedItem().toString();
-        Datos[1]=jTextField7.getText();
+        Datos[6]=jComboBox1.getSelectedItem().toString();
+        Datos[7]=jTextField7.getText();
         jTextField7.setText("");
         modelo.addRow(Datos);
     }//GEN-LAST:event_jButton1MouseClicked

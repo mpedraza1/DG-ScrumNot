@@ -18,10 +18,13 @@ public class Despacho extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         modelo = new DefaultTableModel();
-        modelo.addColumn ("Nombre Cliente");
-        modelo.addColumn ("Rut Cliente");
-        modelo.addColumn ("Red Social");
-        modelo.addColumn ("Actividad Red Social");
+        modelo.addColumn ("Rut");
+        modelo.addColumn ("Nombre Destinatario");
+        modelo.addColumn ("Mensaje");
+        modelo.addColumn ("Fecha Entrega");
+        modelo.addColumn ("Hora Entrega");
+        modelo.addColumn ("Dirección Entrega");
+        modelo.addColumn ("Comuna");
         this.jTable1.setModel(modelo);
     }
 
@@ -41,7 +44,6 @@ public class Despacho extends javax.swing.JFrame {
         txtRutcliente = new javax.swing.JTextField();
         nombreDestinatario = new javax.swing.JTextField();
         txtMensajesaludo = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jTextField3 = new javax.swing.JTextField();
@@ -71,43 +73,43 @@ public class Despacho extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Rut Cliente", "Nombre Destinatario", "Pack", "Mensaje", "F. Entrega", "Hr. Entrega", "Dirección Entrega", "Comuna"
+                "Rut Cliente", "Nombre Destinatario", "Mensaje", "F. Entrega", "Hr. Entrega", "Dirección Entrega", "Comuna"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -166,22 +168,6 @@ public class Despacho extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setForeground(new java.awt.Color(102, 102, 102));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dia de la Madre", "Dia del Padre", "Dia de los pololos", "Aniversario bodas", "Dia del niño" }));
-        jComboBox1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jComboBox1FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jComboBox1FocusLost(evt);
-            }
-        });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("F. Entrega");
 
         jTextField3.setForeground(new java.awt.Color(102, 102, 102));
@@ -210,6 +196,11 @@ public class Despacho extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -249,13 +240,11 @@ public class Despacho extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtComuna, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtRutcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nombreDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtMensajesaludo, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtRutcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(nombreDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMensajesaludo, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
@@ -269,7 +258,6 @@ public class Despacho extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRutcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nombreDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMensajesaludo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
@@ -436,10 +424,6 @@ public class Despacho extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreDestinatarioActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void txtMensajesaludoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMensajesaludoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMensajesaludoActionPerformed
@@ -450,12 +434,13 @@ public class Despacho extends javax.swing.JFrame {
         txtRutcliente.setText("");
         Datos[1]=nombreDestinatario.getText();
         nombreDestinatario.setText("");
-        Datos[2]=jComboBox1.getSelectedItem().toString();
-        Datos[0]=txtMensajesaludo.getText();
+        Datos[2]=txtMensajesaludo.getText();
         txtMensajesaludo.setText("");
-        Datos[1]=direccionEntrega.getText();
+        Datos[4]=jTextField3.getText();
+        jTextField3.setText("");
+        Datos[5]=direccionEntrega.getText();
         direccionEntrega.setText("");
-        Datos[1]=txtComuna.getText();
+        Datos[6]=txtComuna.getText();
         txtComuna.setText("");
         modelo.addRow(Datos);
     }//GEN-LAST:event_jButton1MouseClicked
@@ -483,10 +468,6 @@ public class Despacho extends javax.swing.JFrame {
             nombreDestinatario.setText("");
         }
     }//GEN-LAST:event_nombreDestinatarioFocusGained
-
-    private void jComboBox1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1FocusGained
 
     private void txtMensajesaludoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMensajesaludoFocusGained
         // TODO add your handling code here:
@@ -531,10 +512,6 @@ public class Despacho extends javax.swing.JFrame {
         }
         nombreDestinatario.setForeground(new Color (102,102,102));
     }//GEN-LAST:event_nombreDestinatarioFocusLost
-
-    private void jComboBox1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1FocusLost
 
     private void txtMensajesaludoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMensajesaludoFocusLost
         // TODO add your handling code here:
@@ -645,6 +622,24 @@ public class Despacho extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String [] Datos= new String[7];
+        Datos[0]=txtRutcliente.getText();
+        txtRutcliente.setText("");
+        Datos[1]=nombreDestinatario.getText();
+        nombreDestinatario.setText("");
+        Datos[2]=txtMensajesaludo.getText();
+        txtMensajesaludo.setText("");
+        Datos[3]=jTextField3.getText();
+        jTextField3.setText("");
+        Datos[5]=direccionEntrega.getText();
+        direccionEntrega.setText("");
+        Datos[6]=txtComuna.getText();
+        txtComuna.setText("");
+        modelo.addRow(Datos);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -690,7 +685,6 @@ public class Despacho extends javax.swing.JFrame {
     private javax.swing.JTextField direccionEntrega;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;

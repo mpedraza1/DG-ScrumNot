@@ -2,12 +2,13 @@
 package vista;
 
 import java.awt.Color;
-
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author User
  */
 public class Proveedor extends javax.swing.JFrame {
+    DefaultTableModel modelo;
 
     /**
      * Creates new form Proveedor
@@ -15,6 +16,14 @@ public class Proveedor extends javax.swing.JFrame {
     public Proveedor() {
         initComponents();
         this.setLocationRelativeTo(null);
+        modelo = new DefaultTableModel();
+        modelo.addColumn ("Razón Social");
+        modelo.addColumn ("Rut Proveedor");
+        modelo.addColumn ("Nombre Contacto");
+        modelo.addColumn ("Dirección");
+        modelo.addColumn ("Celular");
+        modelo.addColumn ("Correo");
+        this.jTable1.setModel(modelo);
     }
 
     /**
@@ -140,6 +149,11 @@ public class Proveedor extends javax.swing.JFrame {
         });
 
         agregarProveedor.setText("Agregar");
+        agregarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarProveedorActionPerformed(evt);
+            }
+        });
 
         guardarProveedor.setText("Guardar");
 
@@ -526,6 +540,24 @@ public class Proveedor extends javax.swing.JFrame {
         informes.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void agregarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarProveedorActionPerformed
+        // TODO add your handling code here:
+        String []Datos= new String[6];
+        Datos[0]=razonSocial.getText();
+        razonSocial.setText("");
+        Datos[1]=rutProveedor.getText();
+        rutProveedor.setText("");
+        Datos[2]=nombreContactoproveedor.getText();
+        nombreContactoproveedor.setText("");
+        Datos[3]=direccionProveedor.getText();
+        direccionProveedor.setText("");
+        Datos[4]=celularProveedor.getText();
+        celularProveedor.setText("");
+        Datos[5]=correoProveedor.getText();
+        correoProveedor.setText("");
+        modelo.addRow(Datos);
+    }//GEN-LAST:event_agregarProveedorActionPerformed
 
     /**
      * @param args the command line arguments

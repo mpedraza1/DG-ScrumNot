@@ -1,10 +1,7 @@
 
 package vista;
 
-/**
- *
- * @author User
- */
+
 public class admin extends javax.swing.JFrame {
 
     /**

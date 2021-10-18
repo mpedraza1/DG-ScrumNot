@@ -401,6 +401,12 @@ public class ventas extends javax.swing.JFrame {
             }
         });
     }
+        private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        // TODO add your handling code here:
+        Cliente cliente = new Cliente();
+        cliente.setVisible(true);
+        this.setVisible(false);
+    }   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu categoriaArt;

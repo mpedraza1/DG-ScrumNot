@@ -2,9 +2,6 @@ package modelo;
 //
 import java.sql.*;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import vista.*;
 import java.sql.DriverManager;
 
 public class Conexion {
@@ -31,29 +28,30 @@ public class Conexion {
                  return conn;    
     }
 
-    public boolean  guardarBanco(String nom, String estado){
+    public boolean  guardarBanco(String nom, int estado){
      
       try{
              
          System.out.println("************");
-         System.out.println(nom+estado);
+         System.out.println(nom+" "+estado);
 
          conn = Conexion();
         if (nom != "" ) {
         
             String sql = "INSERT INTO bancos (nombre_banco, estado_banco) VALUES (?,?)";
   
-            PreparedStatement pstmt = conn.prepareStatement(sql);
+            var pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, nom);
-            pstmt.setInt(2, 1);
+            pstmt.setInt(2, estado);
 
             int rowAffected = pstmt.executeUpdate();
             conn.close();
             if(rowAffected == 1)
-            {
+            { JOptionPane.showMessageDialog(null, "Registro realizado con éxito");
                 return true;
                
             }else{
+                JOptionPane.showMessageDialog(null, "Error al crear nuevo registro");
              System.out.println(rowAffected);
             }
            

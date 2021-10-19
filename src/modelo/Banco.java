@@ -4,56 +4,32 @@ package modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Banco {
-    Connection conn = null;
-    private String banco;
-    private String estado;
-    public DefaultTableModel modelo;
-
-    @Override
-    public String toString() {
-        return "Banco{" + "banco=" + banco + ", estado=" + estado + '}';
-    }
+    static Connection conn = null;
     
-    public Banco (String banco, String estado) {
-        this.banco = banco;
-        this.estado = estado;
-        this.modelo = new DefaultTableModel();
-    }
+    
+    
     public Banco () {
         
     }
 
-    public String getBanco() {
-        return banco;
-    }
+    
 
-    public void setBanco(String banco) {
-        this.banco = banco;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+    
     
     public PreparedStatement getBancosActivos() {
             Conexion cn = new Conexion();
-            Connection cnn = cn.Conexion();
+            conn = cn.Conexion();
      
             try{
                     
             String consulta = "select nombre_banco,estado_banco from bancos";
-            PreparedStatement sentencia= cnn.prepareStatement(consulta);
+            PreparedStatement sentencia= conn.prepareStatement(consulta);
 
             return sentencia;
             
@@ -64,7 +40,7 @@ public class Banco {
             
     }
     
-        public ResultSet getBancoActualiza(int id) {
+    public ResultSet getBancoActualiza(int id) {
             Conexion cn = new Conexion();
             Connection cnn = cn.Conexion();
      
@@ -82,7 +58,51 @@ public class Banco {
         return null;
             
     }
+    
+    
+    public static String ObtenerId(String banco){
+        try {
+
+            String id = "";
+            Conexion cn = new Conexion();
+            conn = cn.Conexion();
+            String SQL = "select id_banco from bancos where nombre_banco='" + banco + "'";
+            var st = conn.createStatement();
+            var rs = st.executeQuery(SQL);
+
+            if (rs.next()) {
+                id = rs.getString("id_banco");
+            }
+
+            return id;
+        } catch (SQLException ex) {
+            Logger.getLogger(Banco.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    
+    public static boolean ActualizarDatos(String nombre,int estado, String id){
+    
+        try {
+            Conexion cn = new Conexion();
+            conn = cn.Conexion();
+            String SQL = "Update bancos SET nombre_banco='"+nombre+"',estado_banco="+estado+" where id_banco="+id;
+            System.out.println(SQL);
+            System.out.println(SQL);
+            System.out.println(SQL);
+            var st = conn.createStatement();
+            st.executeUpdate(SQL);
+           
+           return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Banco.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }
+
+
 
        
          //PreparedStatement pstmt = con.prepareStatement("select * from bancos");

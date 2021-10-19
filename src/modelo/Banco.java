@@ -18,10 +18,7 @@ public class Banco {
         
     }
 
-    
 
-    
-    
     public PreparedStatement getBancosActivos() {
             Conexion cn = new Conexion();
             conn = cn.Conexion();

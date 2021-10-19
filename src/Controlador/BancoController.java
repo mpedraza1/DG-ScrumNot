@@ -1,3 +1,4 @@
+
 package Controlador;
 
 import java.sql.PreparedStatement;
@@ -11,7 +12,7 @@ import modelo.Conexion;
 import vista.Bancos;
 import vista.ModificarBanco;
 
-//
+
 
 public class BancoController {
      
@@ -47,8 +48,6 @@ public class BancoController {
     
     }
     
-    
-        
      
     public static void btnCrear(String nombre, int status){
      
@@ -68,8 +67,7 @@ public class BancoController {
            Banco banco = new Banco();
            
            ResultSet bncActivos=banco.getBancoActualiza(estado);
-          //ModificarBanco mdfbnc = new ModificarBanco();
-          // mdfbnc.get
+          
            return bncActivos;
         }
          return null;

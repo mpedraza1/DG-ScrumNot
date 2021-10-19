@@ -7,7 +7,6 @@ import java.sql.DriverManager;
 public class Conexion {
      Connection conn = null;
      
-  
     public Connection Conexion() 
     {
            System.out.println("*****");

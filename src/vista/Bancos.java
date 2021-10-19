@@ -253,77 +253,77 @@ public class Bancos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        
         Cliente cliente = new Cliente();
         cliente.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+        
         Articulo articulo = new Articulo();
         articulo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
+        
         Packs packs = new Packs();
         packs.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+        
         Bancos bancos = new Bancos();
         bancos.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
+        
         Despacho despacho = new Despacho();
         despacho.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
+        
         Comunas comunas = new Comunas();
         comunas.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
+       
         CategoriaArt categoriaArt = new CategoriaArt();
         categoriaArt.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        // TODO add your handling code here:
+        
         RedesSociales redesSociales = new RedesSociales();
         redesSociales.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        // TODO add your handling code here:
+       
         Facturas facturas = new Facturas();
         facturas.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        // TODO add your handling code here:
+        
         Proveedor proveedor = new Proveedor();
         proveedor.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        // TODO add your handling code here:
+        
         Informes informes = new Informes();
         informes.setVisible(true);
         this.setVisible(false);

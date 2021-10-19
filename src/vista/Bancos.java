@@ -1,13 +1,10 @@
 
 package vista;
-import java.sql.*;
-import javax.swing.JButton;
+import Controlador.BancoController;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
-import modelo.Conexion;
+import javax.swing.table.TableModel;
 
 
 public class Bancos extends javax.swing.JFrame {
@@ -71,12 +68,25 @@ public class Bancos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Banco", "Estado"
+                "Nombre", "Estado"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaBanco.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaBancoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaBanco);
 
-        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo" }));
 
         jMenu1.setText("Ventas");
 
@@ -185,17 +195,17 @@ public class Bancos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(txtBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCrear)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnActualizar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
@@ -225,19 +235,20 @@ public class Bancos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        Controlador.BancoController.btnCrear(txtBanco.getText(),cmbEstado.getSelectedItem().toString());
+        Controlador.BancoController.btnCrear(txtBanco.getText(),cmbEstado.getSelectedIndex());
         Controlador.BancoController.dataRows(tablaBanco);
+        
     }//GEN-LAST:event_btnCrearActionPerformed
 
     
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-      int item = cmbEstado.getSelectedIndex();
-    
-        ModificarBanco bancoView = new ModificarBanco();
- 
-       bancoView.setVisible(true);
-       bancoView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-       
+      //int item = cmbEstado.getSelectedIndex();
+      BancoController.btnModificar();
+    /*
+    ModificarBanco bancoView = new ModificarBanco();
+     bancoView.setVisible(true);
+     bancoView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+       */
        
     }//GEN-LAST:event_btnActualizarActionPerformed
 
@@ -318,8 +329,10 @@ public class Bancos extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
-    
-    
+    private void tablaBancoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaBancoMouseClicked
+
+    }//GEN-LAST:event_tablaBancoMouseClicked
+
     public static void main(String args[]) {
         
         

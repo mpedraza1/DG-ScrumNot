@@ -2,12 +2,13 @@
 package vista;
 
 import java.awt.Color;
-
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author User
  */
 public class Proveedor extends javax.swing.JFrame {
+    DefaultTableModel modelo;
 
     /**
      * Creates new form Proveedor
@@ -15,6 +16,14 @@ public class Proveedor extends javax.swing.JFrame {
     public Proveedor() {
         initComponents();
         this.setLocationRelativeTo(null);
+        modelo = new DefaultTableModel();
+        modelo.addColumn ("Razón Social");
+        modelo.addColumn ("Rut Proveedor");
+        modelo.addColumn ("Nombre Contacto");
+        modelo.addColumn ("Dirección");
+        modelo.addColumn ("Celular");
+        modelo.addColumn ("Correo");
+        this.jTable1.setModel(modelo);
     }
 
     /**
@@ -26,6 +35,7 @@ public class Proveedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jPanel1 = new javax.swing.JPanel();
         razonSocial = new javax.swing.JTextField();
         rutProveedor = new javax.swing.JTextField();
@@ -54,8 +64,13 @@ public class Proveedor extends javax.swing.JFrame {
         jMenu8 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
 
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DreamGifts");
+
+        jPanel1.setBackground(new java.awt.Color(102, 0, 0));
 
         razonSocial.setForeground(new java.awt.Color(102, 102, 102));
         razonSocial.setText("Razon Social");
@@ -134,6 +149,11 @@ public class Proveedor extends javax.swing.JFrame {
         });
 
         agregarProveedor.setText("Agregar");
+        agregarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarProveedorActionPerformed(evt);
+            }
+        });
 
         guardarProveedor.setText("Guardar");
 
@@ -226,7 +246,7 @@ public class Proveedor extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(224, 224, 224))
+                .addGap(39, 39, 39))
         );
 
         jMenu1.setText("Ventas");
@@ -335,17 +355,11 @@ public class Proveedor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -527,6 +541,24 @@ public class Proveedor extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
+    private void agregarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarProveedorActionPerformed
+        // TODO add your handling code here:
+        String []Datos= new String[6];
+        Datos[0]=razonSocial.getText();
+        razonSocial.setText("");
+        Datos[1]=rutProveedor.getText();
+        rutProveedor.setText("");
+        Datos[2]=nombreContactoproveedor.getText();
+        nombreContactoproveedor.setText("");
+        Datos[3]=direccionProveedor.getText();
+        direccionProveedor.setText("");
+        Datos[4]=celularProveedor.getText();
+        celularProveedor.setText("");
+        Datos[5]=correoProveedor.getText();
+        correoProveedor.setText("");
+        modelo.addRow(Datos);
+    }//GEN-LAST:event_agregarProveedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -590,6 +622,7 @@ public class Proveedor extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;

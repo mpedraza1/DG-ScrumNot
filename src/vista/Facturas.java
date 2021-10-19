@@ -15,11 +15,12 @@ public class Facturas extends javax.swing.JFrame {
         modelo.addColumn ("Orden de Compra");
         modelo.addColumn ("Nombre articulo");
         modelo.addColumn ("Codigo articulo");
-        modelo.addColumn ("cantidad");
-        modelo.addColumn ("marca");
-        modelo.addColumn ("descripcion");
-        modelo.addColumn ("categoria");
-        modelo.addColumn ("proveedor");
+        modelo.addColumn ("Cantidad");
+        modelo.addColumn ("Marca");
+        modelo.addColumn ("Descripcion");
+        modelo.addColumn ("Categoria");
+        modelo.addColumn ("Proveedor");
+        modelo.addColumn ("F. Vencimiento");
         this.jTable1.setModel(modelo);
     }
 
@@ -28,6 +29,9 @@ public class Facturas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -41,9 +45,6 @@ public class Facturas extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jSeparator2 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -61,6 +62,47 @@ public class Facturas extends javax.swing.JFrame {
         jMenuItem11 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel2.setBackground(new java.awt.Color(102, 0, 0));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel1.setBackground(new java.awt.Color(102, 0, 0));
 
         jTextField1.setForeground(new java.awt.Color(102, 102, 102));
         jTextField1.setText("Orden de Compra");
@@ -180,9 +222,9 @@ public class Facturas extends javax.swing.JFrame {
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -224,42 +266,26 @@ public class Facturas extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
 
         jMenu1.setText("Ventas");
 
@@ -367,172 +393,16 @@ public class Facturas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator2))
-                .addContainerGap(39, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(133, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        String []Datos= new String[4];
-        Datos[0]=jTextField1.getText();
-        jTextField1.setText("");
-        Datos[1]=jTextField2.getText();
-        jTextField2.setText("");
-        Datos[0]=jTextField3.getText();
-        jTextField3.setText("");
-        Datos[1]=jTextField4.getText();
-        jTextField4.setText("");
-        Datos[1]=jTextField5.getText();
-        jTextField5.setText("");
-        Datos[1]=jTextField6.getText();
-        jTextField6.setText("");
-        Datos[2]=jComboBox1.getSelectedItem().toString();
-        Datos[1]=jTextField7.getText();
-        jTextField7.setText("");
-        modelo.addRow(Datos);
-    }//GEN-LAST:event_jButton1MouseClicked
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        int fila=jTable1.getSelectedRow();
-        if(fila>=0){
-            modelo.removeRow(fila);
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Seleccionar fila");
-        }
-    }//GEN-LAST:event_jButton2MouseClicked
-
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-        // TODO add your handling code here:
-        if(jTextField1.getText().equals("Orden de Compra")){
-            jTextField1.setText("");
-        }
-    }//GEN-LAST:event_jTextField1FocusGained
-
-    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
-            // TODO add your handling code here:
-        if(jTextField2.getText().equals("Nombre Articulo")){
-            jTextField2.setText("");
-        }
-    }//GEN-LAST:event_jTextField2FocusGained
-
-    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
-        // TODO add your handling code here:
-        if(jTextField3.getText().equals("Código Articulo")){
-            jTextField3.setText("");
-        }
-    }//GEN-LAST:event_jTextField3FocusGained
-
-    private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
-        // TODO add your handling code here:
-        if(jTextField4.getText().equals("Cantidad")){
-            jTextField4.setText("");
-        }
-    }//GEN-LAST:event_jTextField4FocusGained
-
-    private void jTextField5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusGained
-        // TODO add your handling code here:
-        if(jTextField5.getText().equals("Marca")){
-            jTextField5.setText("");
-        }
-    }//GEN-LAST:event_jTextField5FocusGained
-
-    private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
-        // TODO add your handling code here:
-        if(jTextField6.getText().equals("Descripción")){
-            jTextField6.setText("");
-        }
-    }//GEN-LAST:event_jTextField6FocusGained
-
-    private void jTextField7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusGained
-        // TODO add your handling code here:
-        if(jTextField7.getText().equals("Proveedor")){
-            jTextField7.setText("");
-        }
-    }//GEN-LAST:event_jTextField7FocusGained
-
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        // TODO add your handling code here:
-        if(jTextField1.getText().equals("")){
-            jTextField1.setText("Orden de Compra");
-        }
-        jTextField1.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_jTextField1FocusLost
-
-    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
-        // TODO add your handling code here:
-        if(jTextField2.getText().equals("")){
-            jTextField2.setText("Nombre Articulo");
-        }
-        jTextField2.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_jTextField2FocusLost
-
-    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
-        // TODO add your handling code here:
-        if(jTextField3.getText().equals("")){
-            jTextField3.setText("Código Articulo");
-        }
-        jTextField3.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_jTextField3FocusLost
-
-    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
-        // TODO add your handling code here:
-        if(jTextField4.getText().equals("")){
-            jTextField4.setText("Cantidad");
-        }
-        jTextField4.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_jTextField4FocusLost
-
-    private void jTextField5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusLost
-        // TODO add your handling code here:
-        if(jTextField5.getText().equals("")){
-            jTextField5.setText("Marca");
-        }
-        jTextField5.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_jTextField5FocusLost
-
-    private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
-        // TODO add your handling code here:
-        if(jTextField6.getText().equals("")){
-            jTextField6.setText("Descripción");
-        }
-        jTextField6.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_jTextField6FocusLost
-
-    private void jTextField7FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusLost
-        // TODO add your handling code here:
-        if(jTextField7.getText().equals("")){
-            jTextField7.setText("Proveedor");
-        }
-        jTextField7.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_jTextField7FocusLost
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
@@ -611,6 +481,149 @@ public class Facturas extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        int fila=jTable1.getSelectedRow();
+        if(fila>=0){
+            modelo.removeRow(fila);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Seleccionar fila");
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        String []Datos= new String[10];
+        Datos[0]=jTextField1.getText();
+        jTextField1.setText("");
+        Datos[1]=jTextField2.getText();
+        jTextField2.setText("");
+        Datos[2]=jTextField3.getText();
+        jTextField3.setText("");
+        Datos[3]=jTextField4.getText();
+        jTextField4.setText("");
+        Datos[4]=jTextField5.getText();
+        jTextField5.setText("");
+        Datos[5]=jTextField6.getText();
+        jTextField6.setText("");
+        Datos[6]=jComboBox1.getSelectedItem().toString();
+        Datos[7]=jTextField7.getText();
+        jTextField7.setText("");
+        modelo.addRow(Datos);
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jTextField7FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusLost
+        // TODO add your handling code here:
+        if(jTextField7.getText().equals("")){
+            jTextField7.setText("Proveedor");
+        }
+        jTextField7.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_jTextField7FocusLost
+
+    private void jTextField7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusGained
+        // TODO add your handling code here:
+        if(jTextField7.getText().equals("Proveedor")){
+            jTextField7.setText("");
+        }
+    }//GEN-LAST:event_jTextField7FocusGained
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
+        // TODO add your handling code here:
+        if(jTextField6.getText().equals("")){
+            jTextField6.setText("Descripción");
+        }
+        jTextField6.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_jTextField6FocusLost
+
+    private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
+        // TODO add your handling code here:
+        if(jTextField6.getText().equals("Descripción")){
+            jTextField6.setText("");
+        }
+    }//GEN-LAST:event_jTextField6FocusGained
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusLost
+        // TODO add your handling code here:
+        if(jTextField5.getText().equals("")){
+            jTextField5.setText("Marca");
+        }
+        jTextField5.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_jTextField5FocusLost
+
+    private void jTextField5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusGained
+        // TODO add your handling code here:
+        if(jTextField5.getText().equals("Marca")){
+            jTextField5.setText("");
+        }
+    }//GEN-LAST:event_jTextField5FocusGained
+
+    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
+        // TODO add your handling code here:
+        if(jTextField4.getText().equals("")){
+            jTextField4.setText("Cantidad");
+        }
+        jTextField4.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_jTextField4FocusLost
+
+    private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
+        // TODO add your handling code here:
+        if(jTextField4.getText().equals("Cantidad")){
+            jTextField4.setText("");
+        }
+    }//GEN-LAST:event_jTextField4FocusGained
+
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+        // TODO add your handling code here:
+        if(jTextField3.getText().equals("")){
+            jTextField3.setText("Código Articulo");
+        }
+        jTextField3.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_jTextField3FocusLost
+
+    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        // TODO add your handling code here:
+        if(jTextField3.getText().equals("Código Articulo")){
+            jTextField3.setText("");
+        }
+    }//GEN-LAST:event_jTextField3FocusGained
+
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+        // TODO add your handling code here:
+        if(jTextField2.getText().equals("")){
+            jTextField2.setText("Nombre Articulo");
+        }
+        jTextField2.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_jTextField2FocusLost
+
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        // TODO add your handling code here:
+        if(jTextField2.getText().equals("Nombre Articulo")){
+            jTextField2.setText("");
+        }
+    }//GEN-LAST:event_jTextField2FocusGained
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        // TODO add your handling code here:
+        if(jTextField1.getText().equals("")){
+            jTextField1.setText("Orden de Compra");
+        }
+        jTextField1.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_jTextField1FocusLost
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        // TODO add your handling code here:
+        if(jTextField1.getText().equals("Orden de Compra")){
+            jTextField1.setText("");
+        }
+    }//GEN-LAST:event_jTextField1FocusGained
+
     /**
      * @param args the command line arguments
      */
@@ -674,8 +687,8 @@ public class Facturas extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

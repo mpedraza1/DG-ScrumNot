@@ -7,8 +7,7 @@ import modelo.Banco;
 
 public class ModificarBanco extends javax.swing.JFrame {
     
-       
-    
+  
     public ModificarBanco(String Banco, int Estado,String id) {
 
         initComponents();
@@ -71,7 +70,6 @@ public class ModificarBanco extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
     
     
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed

@@ -511,7 +511,7 @@ DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_nuevoActionPerformed
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-        int FilaSelec = tabla.getSelectedRow();
+       /* int FilaSelec = tabla.getSelectedRow();
         if(FilaSelec>= 0){
             txtmarca.setText(tabla.getValueAt(FilaSelec,0).toString());
             txtcodigo.setText(tabla.getValueAt(FilaSelec,1).toString());
@@ -529,7 +529,7 @@ DefaultTableModel modelo = new DefaultTableModel();
             JOptionPane.showMessageDialog(this, "FILA NO SELECCIONADA");
         }
         
-        
+        */
     }//GEN-LAST:event_modificarActionPerformed
 
     private void txtmarcaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtmarcaFocusGained

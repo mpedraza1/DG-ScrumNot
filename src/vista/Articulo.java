@@ -498,7 +498,7 @@ DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
-        txtmarca.setText("");
+      /*  txtmarca.setText("");
         txtcodigo.setText("");
         txtcantidad.setText("");
         txtdescripcion.setText("");
@@ -506,7 +506,7 @@ DefaultTableModel modelo = new DefaultTableModel();
         txtordendecompra.setText("");
         txtrutproveedor.setText("");
         txtven.setText("");
-        txtmarca.requestFocus();
+        txtmarca.requestFocus();*/
         
     }//GEN-LAST:event_nuevoActionPerformed
 

@@ -444,7 +444,7 @@ DefaultTableModel modelo = new DefaultTableModel();
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
-       String Dato[] = new String [9];
+/*       String Dato[] = new String [9];
        
        Dato[0] = txtmarca.getText();
        Dato[1] = txtcodigo.getText();
@@ -455,7 +455,7 @@ DefaultTableModel modelo = new DefaultTableModel();
        Dato[6] = txtrutproveedor.getText();
        Dato[7] = txtven.getText();
        Dato[8] = JCEstado.getSelectedItem().toString();
-       modelo.addRow(Dato);
+       modelo.addRow(Dato);*/
        
     }//GEN-LAST:event_agregarActionPerformed
 
@@ -488,17 +488,19 @@ DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_JCEstadoActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-     int FilaSelec = tabla.getSelectedRow();
+/*     int FilaSelec = tabla.getSelectedRow();
      if(FilaSelec>=0){
          modelo.removeRow(FilaSelec);
          
      }
      else{JOptionPane.showMessageDialog(this, "FILA NO SELECCIONADA");
-     }
+     }*/
+
+
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
-        txtmarca.setText("");
+    /*   txtmarca.setText("");
         txtcodigo.setText("");
         txtcantidad.setText("");
         txtdescripcion.setText("");
@@ -506,12 +508,12 @@ DefaultTableModel modelo = new DefaultTableModel();
         txtordendecompra.setText("");
         txtrutproveedor.setText("");
         txtven.setText("");
-        txtmarca.requestFocus();
+        txtmarca.requestFocus();*/
         
     }//GEN-LAST:event_nuevoActionPerformed
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-        int FilaSelec = tabla.getSelectedRow();
+       /* int FilaSelec = tabla.getSelectedRow();
         if(FilaSelec>= 0){
             txtmarca.setText(tabla.getValueAt(FilaSelec,0).toString());
             txtcodigo.setText(tabla.getValueAt(FilaSelec,1).toString());
@@ -529,7 +531,8 @@ DefaultTableModel modelo = new DefaultTableModel();
             JOptionPane.showMessageDialog(this, "FILA NO SELECCIONADA");
         }
         
-        
+        */
+       String ayuda;
     }//GEN-LAST:event_modificarActionPerformed
 
     private void txtmarcaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtmarcaFocusGained

@@ -25,7 +25,7 @@ public class rrssController {
       
     public static void botoningresar(String nombre, int status){
        
-       conn.guardarrrss( nombre, status);
+       conn.guardarrrss(nombre, status);
        System.out.println(nombre);
     }
     

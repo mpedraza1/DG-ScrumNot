@@ -5,25 +5,23 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import Controlador.rrssController;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 /**
  *
  * @author User
  */
 public class RedesSociales extends javax.swing.JFrame {
-    DefaultTableModel modelo;
 
     /**
      * Creates new form RedesSociales
      */
     public RedesSociales() {
         initComponents();
+        Controlador.rrssController.dataRows(tablarrss);
         this.setLocationRelativeTo(null);
-        modelo = new DefaultTableModel();
-        modelo.addColumn ("ID RRSS");
-        modelo.addColumn ("Nombre Red Social");
-        modelo.addColumn ("Actividad Red Social");
-        this.jTable2.setModel(modelo);
         jPanel1.setFocusable(true);
     }
 
@@ -41,7 +39,7 @@ public class RedesSociales extends javax.swing.JFrame {
         txtbuscar = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablarrss = new javax.swing.JTable();
         estadored = new javax.swing.JComboBox<>();
         botoneliminar = new javax.swing.JButton();
         nombreredsocial = new javax.swing.JTextField();
@@ -94,33 +92,47 @@ public class RedesSociales extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablarrss.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-
+                "ID RRRSS", "Nombre Red Social", "Actividad Red Social"
             }
-        ));
-        jTable2.setCellSelectionEnabled(true);
-        jScrollPane2.setViewportView(jTable2);
-        jTable2.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true
+            };
 
-        estadored.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activa", "No activa" }));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablarrss.setCellSelectionEnabled(true);
+        jScrollPane2.setViewportView(tablarrss);
+        tablarrss.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+
+        estadored.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        estadored.setToolTipText("");
+        estadored.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estadoredActionPerformed(evt);
+            }
+        });
 
         botoneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/eliminar.png"))); // NOI18N
         botoneliminar.setText("Borrar Dato");
@@ -335,13 +347,13 @@ public class RedesSociales extends javax.swing.JFrame {
 
     private void botoneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoneliminarActionPerformed
         // TODO add your handling code here:
-        int fila=jTable2.getSelectedRow();
-        if(fila>=0){
-            modelo.removeRow(fila);
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Seleccionar fila");
-        }
+    //    int fila=tablarrss.getSelectedRow();
+     //   if(fila>=0){
+     //       modelo.removeRow(fila);
+     //   }
+     //   else{
+    //        JOptionPane.showMessageDialog(null, "Seleccionar fila");
+     //   }
     }//GEN-LAST:event_botoneliminarActionPerformed
 
     private void nombreredsocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreredsocialActionPerformed
@@ -350,22 +362,25 @@ public class RedesSociales extends javax.swing.JFrame {
 
     private void botoningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoningresarActionPerformed
         // TODO add your handling code here:
-
-        int c=nombreredsocial.getText().length();
+        Controlador.rrssController.botoningresar(nombreredsocial.getText(), estadored.getSelectedIndex());
+        Controlador.rrssController.dataRows(tablarrss);
+        
+        //int c=nombreredsocial.getText().length();
 
             
-                String [] Datos= new String[3];
-                if (nombreredsocial.getText().equals("Nombre red social")){
-                JOptionPane.showMessageDialog(this, "Ingrese nombre de red social");
-            }
-                else{
-                    if (c>0) {
-                    Datos[1]=nombreredsocial.getText();
-                    nombreredsocial.setText("");
-                    Datos[2]=estadored.getSelectedItem().toString();
-                    modelo.addRow(Datos);
-                    }
-            }
+         //       String [] Datos= new String[3];
+           //     if (nombreredsocial.getText().equals("Nombre red social")){
+             //   JOptionPane.showMessageDialog(this, "Ingrese nombre de red social");
+          //  }
+          //      else{
+         //           if (c>0) {
+         //           Datos[1]=nombreredsocial.getText();
+         //           nombreredsocial.setText("");
+         //           Datos[2]=estadored.getSelectedItem().toString();
+         //           modelo.addRow(Datos);
+         //           }
+         //   }
+                
 
 
 
@@ -374,32 +389,33 @@ public class RedesSociales extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        nombreredsocial.setText("");
+      /*  nombreredsocial.setText("");
         txtbuscar.setText("");
-        
+        */
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void botonmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmodificarActionPerformed
         // TODO add your handling code here:
-        int FilaSelec = jTable2.getSelectedRow();
-        if(FilaSelec>= 0){
-            nombreredsocial.setText(modelo.getValueAt(FilaSelec,1).toString());
-            modelo.removeRow(FilaSelec);
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "Seleccionar fila para modificar");
-        }
+      //  int FilaSelec = tablarrss.getSelectedRow();
+      //  if(FilaSelec>= 0){
+      //      nombreredsocial.setText(modelo.getValueAt(FilaSelec,1).toString());
+      //      modelo.removeRow(FilaSelec);
+      //  }
+      //  else{
+      //      JOptionPane.showMessageDialog(this, "Seleccionar fila para modificar");
+      //  }
     }//GEN-LAST:event_botonmodificarActionPerformed
 
     private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
         // TODO add your handling code here:
-        String valor = txtbuscar.getText();
+     /*   String valor = txtbuscar.getText();
         
-        for (int i=0;i<jTable2.getRowCount(); i++){
-            if (jTable2.getValueAt(i,1).equals(valor)){
-                jTable2.changeSelection(i,1,false,false);
+        for (int i=0;i<tablarrss.getRowCount(); i++){
+            if (tablarrss.getValueAt(i,1).equals(valor)){
+                tablarrss.changeSelection(i,1,false,false);
             }
         }
+        */
     }//GEN-LAST:event_txtbuscarActionPerformed
 
     private void nombreredsocialFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreredsocialFocusGained
@@ -509,15 +525,17 @@ public class RedesSociales extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
+    private void estadoredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoredActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_estadoredActionPerformed
+
     /**
      * @param args the command line arguments
      */
+
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -526,13 +544,13 @@ public class RedesSociales extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RedesSociales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bancos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RedesSociales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bancos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RedesSociales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bancos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RedesSociales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bancos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -542,6 +560,25 @@ public class RedesSociales extends javax.swing.JFrame {
                 new RedesSociales().setVisible(true);
             }
         });
+}
+    public JTextField getNombreredsocial() {
+        return nombreredsocial;
+    }
+    
+    public void setNombreredsocial(JTextField nombreredsocial) {
+        this.nombreredsocial = nombreredsocial;
+    }
+    
+    public JComboBox<String> getEstadored() {
+        return estadored;
+    }
+    
+    public void setEstadored(JComboBox<String> estadored) {
+        this.estadored = estadored;
+    }
+    
+    public void setTablarrss(JTable tablarrss) {
+        this.tablarrss = tablarrss;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -568,9 +605,9 @@ public class RedesSociales extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextField nombreredsocial;
+    private javax.swing.JTable tablarrss;
     private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
 }

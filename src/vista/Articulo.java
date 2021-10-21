@@ -532,6 +532,7 @@ DefaultTableModel modelo = new DefaultTableModel();
         }
         
         */
+       String ayuda;
     }//GEN-LAST:event_modificarActionPerformed
 
     private void txtmarcaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtmarcaFocusGained

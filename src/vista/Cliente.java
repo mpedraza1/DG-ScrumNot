@@ -1,30 +1,21 @@
-
-
 package vista;
 
 import java.awt.Color;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class Cliente extends javax.swing.JFrame {
-    DefaultTableModel modelo;
-
+    
+    
     
     public Cliente() {
         initComponents();
         this.setLocationRelativeTo(null);
-        modelo = new DefaultTableModel();
-        modelo.addColumn ("Nombre Cliente");
-        modelo.addColumn ("Rut Cliente");
-        modelo.addColumn ("F. Nacimiento");
-        modelo.addColumn ("Telefono");
-        modelo.addColumn ("Celular");
-        modelo.addColumn ("Correo");
-        modelo.addColumn ("Redes Sociales");
-        this.jTable2.setModel(modelo);
+        
     }
-
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -33,19 +24,21 @@ public class Cliente extends javax.swing.JFrame {
         jDateChooser5 = new com.toedter.calendar.JDateChooser();
         jDateChooser6 = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
-        nombreCliente = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        numeroTelefono = new javax.swing.JTextField();
-        numeroCelular = new javax.swing.JTextField();
-        correoElectronico = new javax.swing.JTextField();
-        redesSociales = new javax.swing.JTextField();
+        txtCliente = new javax.swing.JTextField();
+        txtRut = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
+        txtCelular = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         botonDesactivar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         jDateChooser7 = new com.toedter.calendar.JDateChooser();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaCliente = new javax.swing.JTable();
+        btnEditar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -68,79 +61,79 @@ public class Cliente extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 0, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(650, 550));
 
-        nombreCliente.setForeground(new java.awt.Color(102, 102, 102));
-        nombreCliente.setText("Nombre Cliente");
-        nombreCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtCliente.setForeground(new java.awt.Color(102, 102, 102));
+        txtCliente.setText("Nombre Cliente");
+        txtCliente.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                nombreClienteFocusGained(evt);
+                txtClienteFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                nombreClienteFocusLost(evt);
+                txtClienteFocusLost(evt);
             }
         });
 
-        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField1.setText("Rut Cliente");
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtRut.setForeground(new java.awt.Color(102, 102, 102));
+        txtRut.setText("Rut Cliente");
+        txtRut.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
+                txtRutFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
+                txtRutFocusLost(evt);
             }
         });
 
-        numeroTelefono.setForeground(new java.awt.Color(102, 102, 102));
-        numeroTelefono.setText("Telefono");
-        numeroTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtTelefono.setForeground(new java.awt.Color(102, 102, 102));
+        txtTelefono.setText("Telefono");
+        txtTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                numeroTelefonoFocusGained(evt);
+                txtTelefonoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                numeroTelefonoFocusLost(evt);
+                txtTelefonoFocusLost(evt);
             }
         });
 
-        numeroCelular.setForeground(new java.awt.Color(102, 102, 102));
-        numeroCelular.setText("Celular");
-        numeroCelular.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtCelular.setForeground(new java.awt.Color(102, 102, 102));
+        txtCelular.setText("Celular");
+        txtCelular.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                numeroCelularFocusGained(evt);
+                txtCelularFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                numeroCelularFocusLost(evt);
+                txtCelularFocusLost(evt);
             }
         });
 
-        correoElectronico.setForeground(new java.awt.Color(102, 102, 102));
-        correoElectronico.setText("Correo");
-        correoElectronico.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtCorreo.setForeground(new java.awt.Color(102, 102, 102));
+        txtCorreo.setText("Correo");
+        txtCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                correoElectronicoFocusGained(evt);
+                txtCorreoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                correoElectronicoFocusLost(evt);
+                txtCorreoFocusLost(evt);
             }
         });
-        correoElectronico.addActionListener(new java.awt.event.ActionListener() {
+        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                correoElectronicoActionPerformed(evt);
+                txtCorreoActionPerformed(evt);
             }
         });
 
-        redesSociales.setForeground(new java.awt.Color(102, 102, 102));
-        redesSociales.setText("Redes Sociales");
-        redesSociales.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtId.setForeground(new java.awt.Color(102, 102, 102));
+        txtId.setText("Redes Sociales");
+        txtId.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                redesSocialesFocusGained(evt);
+                txtIdFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                redesSocialesFocusLost(evt);
+                txtIdFocusLost(evt);
             }
         });
-        redesSociales.addActionListener(new java.awt.event.ActionListener() {
+        txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                redesSocialesActionPerformed(evt);
+                txtIdActionPerformed(evt);
             }
         });
 
@@ -151,41 +144,29 @@ public class Cliente extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Agregar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAgregar.setText("Agregar");
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnAgregarMouseClicked(evt);
+            }
+        });
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
+        tablaCliente.setModel(tablaCliente.getModel());
+        jScrollPane1.setViewportView(tablaCliente);
 
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTable2);
+        });
+
+        jButton2.setText("Listar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -195,33 +176,41 @@ public class Cliente extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jDateChooser7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(numeroCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(numeroTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(correoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(redesSociales, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(77, 77, 77)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton1)
-                                    .addComponent(botonDesactivar)))
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtId))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jDateChooser7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(botonDesactivar))))
+                        .addGap(691, 691, 691))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,23 +218,25 @@ public class Cliente extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jDateChooser7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(redesSociales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonDesactivar)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(numeroCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(correoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(numeroTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                        .addComponent(btnAgregar)
+                        .addComponent(botonDesactivar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar)
+                    .addComponent(jButton2))
+                .addGap(19, 19, 19)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(138, 138, 138)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -446,135 +437,123 @@ public class Cliente extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        String []Datos= new String[6];
-        Datos[0]=nombreCliente.getText();
-        nombreCliente.setText("");
-        Datos[1]=jTextField1.getText();
-        jTextField1.setText("");
-        Datos[2]=numeroCelular.getText();
-        numeroCelular.setText("");
-        Datos[3]=numeroTelefono.getText();
-        numeroTelefono.setText("");
-        Datos[4]=correoElectronico.getText();
-        correoElectronico.setText("");
-        Datos[5]=redesSociales.getText();
-        redesSociales.setText("");
-        modelo.addRow(Datos);
-    }//GEN-LAST:event_jButton1MouseClicked
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+        
+    }//GEN-LAST:event_btnAgregarMouseClicked
 
     private void botonDesactivarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonDesactivarMouseClicked
-        int fila=jTable2.getSelectedRow();
-        if(fila>=0){
-            modelo.removeRow(fila);
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Seleccionar fila");
-        }
+       
     }//GEN-LAST:event_botonDesactivarMouseClicked
 
-    private void redesSocialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redesSocialesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_redesSocialesActionPerformed
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        
+    }//GEN-LAST:event_txtIdActionPerformed
 
-    private void redesSocialesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_redesSocialesFocusLost
+    private void txtIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdFocusLost
         // TODO add your handling code here:
-        if(redesSociales.getText().equals("")){
-            redesSociales.setText("Redes Sociales");
+        if(txtId.getText().equals("")){
+            txtId.setText("Redes Sociales");
         }
-        redesSociales.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_redesSocialesFocusLost
+        txtId.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_txtIdFocusLost
 
-    private void redesSocialesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_redesSocialesFocusGained
+    private void txtIdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdFocusGained
         // TODO add your handling code here:
-        if(redesSociales.getText().equals("Redes Sociales")){
-            redesSociales.setText("");
+        if(txtId.getText().equals("Redes Sociales")){
+            txtId.setText("");
         }
-    }//GEN-LAST:event_redesSocialesFocusGained
+    }//GEN-LAST:event_txtIdFocusGained
 
-    private void correoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoElectronicoActionPerformed
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
+        
+    }//GEN-LAST:event_txtCorreoActionPerformed
+
+    private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_correoElectronicoActionPerformed
+        if(txtCorreo.getText().equals("")){
+            txtCorreo.setText("Correo");
+        }
+        txtCorreo.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_txtCorreoFocusLost
 
-    private void correoElectronicoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_correoElectronicoFocusLost
+    private void txtCorreoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusGained
         // TODO add your handling code here:
-        if(correoElectronico.getText().equals("")){
-            correoElectronico.setText("Correo");
+        if(txtCorreo.getText().equals("Correo")){
+            txtCorreo.setText("");
         }
-        correoElectronico.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_correoElectronicoFocusLost
+    }//GEN-LAST:event_txtCorreoFocusGained
 
-    private void correoElectronicoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_correoElectronicoFocusGained
+    private void txtCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusLost
         // TODO add your handling code here:
-        if(correoElectronico.getText().equals("Correo")){
-            correoElectronico.setText("");
+        if(txtCelular.getText().equals("")){
+            txtCelular.setText("Celular");
         }
-    }//GEN-LAST:event_correoElectronicoFocusGained
+        txtCelular.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_txtCelularFocusLost
 
-    private void numeroCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroCelularFocusLost
+    private void txtCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusGained
         // TODO add your handling code here:
-        if(numeroCelular.getText().equals("")){
-            numeroCelular.setText("Celular");
+        if(txtCelular.getText().equals("Celular")){
+            txtCelular.setText("");
         }
-        numeroCelular.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_numeroCelularFocusLost
+    }//GEN-LAST:event_txtCelularFocusGained
 
-    private void numeroCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroCelularFocusGained
+    private void txtTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusLost
         // TODO add your handling code here:
-        if(numeroCelular.getText().equals("Celular")){
-            numeroCelular.setText("");
+        if(txtTelefono.getText().equals("")){
+            txtTelefono.setText("Telefono");
         }
-    }//GEN-LAST:event_numeroCelularFocusGained
+        txtTelefono.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_txtTelefonoFocusLost
 
-    private void numeroTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroTelefonoFocusLost
+    private void txtTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusGained
         // TODO add your handling code here:
-        if(numeroTelefono.getText().equals("")){
-            numeroTelefono.setText("Telefono");
+        if(txtTelefono.getText().equals("Telefono")){
+            txtTelefono.setText("");
         }
-        numeroTelefono.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_numeroTelefonoFocusLost
+    }//GEN-LAST:event_txtTelefonoFocusGained
 
-    private void numeroTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroTelefonoFocusGained
+    private void txtRutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRutFocusLost
         // TODO add your handling code here:
-        if(numeroTelefono.getText().equals("Telefono")){
-            numeroTelefono.setText("");
+        if(txtRut.getText().equals("")){
+            txtRut.setText("Rut Cliente");
         }
-    }//GEN-LAST:event_numeroTelefonoFocusGained
+        txtRut.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_txtRutFocusLost
 
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+    private void txtRutFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRutFocusGained
+       
+        if(txtRut.getText().equals("Rut Cliente")){
+            txtRut.setText("");
+        }
+    }//GEN-LAST:event_txtRutFocusGained
+
+    private void txtClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtClienteFocusLost
+           if(txtCliente.getText().equals("")){
+            txtCliente.setText("Nombre Cliente");
+        }
+        txtCliente.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_txtClienteFocusLost
+
+    private void txtClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtClienteFocusGained
+
+        if(txtCliente.getText().equals("Nombre Cliente")){
+            txtCliente.setText("");
+        }
+    }//GEN-LAST:event_txtClienteFocusGained
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+  
+        Controlador.ClientesController.btnAgregar(txtCliente.getText(),txtRut.getText(),txtCelular.getText(),txtTelefono.getText(),txtCorreo.getText(),txtId.getText(),jDateChooser7.getDate());
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-        if(jTextField1.getText().equals("")){
-            jTextField1.setText("Rut Cliente");
-        }
-        jTextField1.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_jTextField1FocusLost
+    }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-        // TODO add your handling code here:
-        if(jTextField1.getText().equals("Rut Cliente")){
-            jTextField1.setText("");
-        }
-    }//GEN-LAST:event_jTextField1FocusGained
-
-    private void nombreClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreClienteFocusLost
-        // TODO add your handling code here:
-        if(nombreCliente.getText().equals("")){
-            nombreCliente.setText("Nombre Cliente");
-        }
-        nombreCliente.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_nombreClienteFocusLost
-
-    private void nombreClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreClienteFocusGained
-
-        if(nombreCliente.getText().equals("Nombre Cliente")){
-            nombreCliente.setText("");
-        }
-    }//GEN-LAST:event_nombreClienteFocusGained
-
-    /*
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+   
+    public static void main(String args[]) throws Exception {
+         
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -614,8 +593,9 @@ public class Cliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonDesactivar;
-    private javax.swing.JTextField correoElectronico;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateChooser5;
     private com.toedter.calendar.JDateChooser jDateChooser6;
     private com.toedter.calendar.JDateChooser jDateChooser7;
@@ -638,11 +618,12 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField nombreCliente;
-    private javax.swing.JTextField numeroCelular;
-    private javax.swing.JTextField numeroTelefono;
-    private javax.swing.JTextField redesSociales;
+    public javax.swing.JTable tablaCliente;
+    private javax.swing.JTextField txtCelular;
+    private javax.swing.JTextField txtCliente;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtRut;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,6 @@
 package vista;
 
+import Controlador.ClientesController;
 import java.awt.Color;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -156,7 +157,22 @@ public class Cliente extends javax.swing.JFrame {
             }
         });
 
-        tablaCliente.setModel(tablaCliente.getModel());
+        tablaCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cliente", "Rut", "f Nac", "Celular", "Telefono", "Correo", "id red"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tablaCliente);
 
         btnEditar.setText("Editar");
@@ -167,6 +183,11 @@ public class Cliente extends javax.swing.JFrame {
         });
 
         jButton2.setText("Listar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -543,13 +564,17 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtClienteFocusGained
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-  
+
         Controlador.ClientesController.btnAgregar(txtCliente.getText(),txtRut.getText(),txtCelular.getText(),txtTelefono.getText(),txtCorreo.getText(),txtId.getText(),jDateChooser7.getDate());
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ClientesController.Rellenar();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
    
     public static void main(String args[]) throws Exception {

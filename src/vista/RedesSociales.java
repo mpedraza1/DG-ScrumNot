@@ -126,7 +126,8 @@ public class RedesSociales extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tablarrss);
         tablarrss.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
-        estadored.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        estadored.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo" }));
+        estadored.setSelectedIndex(1);
         estadored.setToolTipText("");
         estadored.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

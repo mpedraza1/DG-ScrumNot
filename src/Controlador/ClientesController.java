@@ -114,58 +114,10 @@ public class ClientesController {
         System.out.println(cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 1));
     }
 
-    public static void btnCrear(String nombre, String rut, String celular, String telefono, String correo, String id) {
-
-        /*conn.guardarCliente(nombre, rut, celular, telefono, correo, id);
-        System.out.println(nombre);
-
-    }
-
-    /* public static ResultSet btnEditar() {
-        if (!"".equals(nombre) && estado > 0) {
-            DefaultTableModel tblModel = new DefaultTableModel();
-
-            Banco banco = new Banco();
-
-            ResultSet bncActivos = banco.getBancoActualiza(estado);
-
-            return bncActivos;
-        }
-        return null;*/
-    }
-
+    
     public static void main(String[] args) {
         cl.setVisible(true);
 
     }
-    /*
-    public static void dataRows(JTable tablaCliente) {
-        DefaultTableModel table = (DefaultTableModel) tablaCliente.getModel();
-        tablaCliente.setModel(table);
-        table.setRowCount(0);
-
-        try {
-
-            Consultas cs = new Consultas();
-            PreparedStatement sentencia = cl.getBancosActivos();
-
-            ResultSetMetaData rsMd = sentencia.getMetaData();
-            int columnSize = rsMd.getColumnCount();
-
-            ResultSet rs = sentencia.executeQuery();
-
-            while (rs.next()) {
-                Object[] filas = new Object[columnSize];
-
-                for (int i = 0; i < columnSize; i++) {
-                    filas[i] = rs.getObject(i + 1);
-                }
-
-                table.addRow(filas);
-            }
-
-        } catch (SQLException e) {
-            System.err.println(e);
-        }
-     */
+    
 }

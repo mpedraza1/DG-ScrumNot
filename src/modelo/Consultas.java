@@ -36,7 +36,7 @@ public class Consultas {
     
     
     // Select Queries
-    public ResultSet doQueryGet(String SQL) {
+    public ResultSet PedirDatos(String SQL) {
         try {
             var st = conexionSQL.createStatement(); // Statement Object
             var rs = st.executeQuery(SQL); // ResultSet Object
@@ -53,36 +53,22 @@ public class Consultas {
     
     
     //Insert & Update Queries
-    public boolean doQueryPost(String SQL) {
+    public boolean InsertarDatos(String SQL) {
         try {
             var st = conexionSQL.createStatement();
                 st.executeUpdate(SQL);
-                
                  JOptionPane.showMessageDialog(null, "Registro realizado con éxito");
+                 return true;
                 
             } catch (SQLException e) {
-                System.out.println("Error consultas.doQueryPost: " +  e.getLocalizedMessage());
+                System.out.println("Error consultas.InsertarDatos: " +  e.getLocalizedMessage());
                 return false;
             }
         
-        return true;
+        
     }
     
-    public ResultSet traerTodos(String tabla){
-        String Query = "SELECT * FROM " + tabla;
-        
-        try{
-            var st = conexionSQL.createStatement();
-            var rs = st.executeQuery(Query);
-           
-            return rs;
-            
-        } catch (SQLException e) {
-            System.out.println("Error Consultas.traerTodos: " + e.getLocalizedMessage());
-        }
-        
-        return null;
-    }
+ 
         
 }
     

@@ -12,7 +12,6 @@ public class Bancos extends javax.swing.JFrame {
     
     public Bancos() {
             initComponents();
-        Controlador.BancoController.dataRows(tablaBanco);
         this.setLocationRelativeTo(null);
         
     }
@@ -29,6 +28,7 @@ public class Bancos extends javax.swing.JFrame {
         tablaBanco = new javax.swing.JTable();
         cmbEstado = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
+        btnListar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -87,6 +87,13 @@ public class Bancos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaBanco);
 
         cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo" }));
+
+        btnListar.setText("Listar");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Ventas");
 
@@ -195,7 +202,7 @@ public class Bancos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(jLabel1)
@@ -203,8 +210,10 @@ public class Bancos extends javax.swing.JFrame {
                         .addComponent(txtBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCrear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnListar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnActualizar))
                     .addGroup(layout.createSequentialGroup()
@@ -223,7 +232,8 @@ public class Bancos extends javax.swing.JFrame {
                     .addComponent(txtBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCrear)
                     .addComponent(btnActualizar)
-                    .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnListar))
                 .addGap(20, 20, 20)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -236,7 +246,7 @@ public class Bancos extends javax.swing.JFrame {
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         Controlador.BancoController.btnCrear(txtBanco.getText(),cmbEstado.getSelectedIndex());
-        Controlador.BancoController.dataRows(tablaBanco);
+        Controlador.BancoController.Rellenar();
         
     }//GEN-LAST:event_btnCrearActionPerformed
 
@@ -333,6 +343,10 @@ public class Bancos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tablaBancoMouseClicked
 
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        Controlador.BancoController.Rellenar();
+    }//GEN-LAST:event_btnListarActionPerformed
+
     public static void main(String args[]) {
         
         
@@ -388,6 +402,7 @@ public class Bancos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCrear;
+    private javax.swing.JButton btnListar;
     private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;

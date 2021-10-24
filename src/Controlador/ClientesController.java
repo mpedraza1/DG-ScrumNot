@@ -16,18 +16,19 @@ import modelo.*;
 import modelo.Conexion;
 import vista.Cliente;
 import vista.ModificarBanco;
+import vista.ModificarCliente;
 
 public class ClientesController {
 
     static Conexion conn = new Conexion();
     public static Cliente cl = new Cliente();
 
-    public static void btnAgregar(String nombre, String rut, String celular, String telefono, String correo, String id, Date chosenDate) {
+public static void btnAgregar(String nombre, String rut, String telefono, String celular, String correo, int red, Date chosenDate) {
 
         Consultas cs = new Consultas();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String fecha = sdf.format(chosenDate);
-        String SQL = "INSERT INTO cliente (rut_cl, nombre_cl, fono_cl, fn_cl, mail_cl, celular_cl,id_red) VALUES('" + rut + "','" + nombre + "'," + telefono + ",'" + fecha + "','" + correo + "'," + celular + ",1)";
+        String SQL = "INSERT INTO cliente (nombre_cl, rut_cl, fono_cl, celular_cl, mail_cl, id_red, fn_cl) VALUES('" + nombre + "','" + rut + "'," + telefono + "," + celular + ",'" + correo + "',"+ red +",'" + fecha + "')";
         
         
         
@@ -75,8 +76,8 @@ public class ClientesController {
               datos[0] =  rs.getString("nombre_cl");
               datos[1] =  rs.getString("rut_cl");
               datos[2] =  rs.getString("fn_cl");
-              datos[3] =  rs.getString("fono_cl");
-              datos[4] =  rs.getString("celular_cl");
+              datos[3] =  rs.getString("celular_cl");
+              datos[4] =  rs.getString("fono_cl");
               datos[5] =  rs.getString("mail_cl");
               datos[6] =  rs.getString("id_red");
               tabla.addRow(datos);
@@ -97,23 +98,24 @@ public class ClientesController {
 
     }
 
-    public static void btnModificar() {
+    public static void btnEditar(String nombre, String rut, String celular, String telefono, String correo, int red, Date chosenDate) {
 
         if (cl.tablaCliente.getSelectedRow() != -1) {
 
-            String nombre = (String) cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 0);
-            String id = Banco.ObtenerId(nombre);
-
-            int estado = (int) cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 1);
-
-            ModificarBanco modificar = new ModificarBanco(nombre, estado, id);
-            modificar.setVisible(true);
+           
+            
+            String sql = "UPDATE cliente SET nombre_cl, fono_cl, fn_cl, mail_cl, celular_cl,id_red WHERE rut_cl = ";
+           // ModificarCliente modificar = new ModificarCliente(nombre, rut, celular, telefono, correo, chosenDate, red);
+           // modificar.setVisible(true);
         }
 
         System.out.println(cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 0));
         System.out.println(cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 1));
     }
 
+    
+   
+    
     
     public static void main(String[] args) {
         cl.setVisible(true);

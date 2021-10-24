@@ -27,7 +27,6 @@ public class Conexion {
                  return conn;    
     }
 
-  
     public boolean  guardarrrss(String nom, int estado){
      
       try{

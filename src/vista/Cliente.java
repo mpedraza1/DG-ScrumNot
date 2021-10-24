@@ -30,7 +30,6 @@ public class Cliente extends javax.swing.JFrame {
         txtTelefono = new javax.swing.JTextField();
         txtCelular = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
-        txtId = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         btnAgregar = new javax.swing.JButton();
         jDateChooser7 = new com.toedter.calendar.JDateChooser();
@@ -38,7 +37,8 @@ public class Cliente extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaCliente = new javax.swing.JTable();
         btnEditar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnListar = new javax.swing.JButton();
+        cbxRedes = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -121,22 +121,6 @@ public class Cliente extends javax.swing.JFrame {
             }
         });
 
-        txtId.setForeground(new java.awt.Color(102, 102, 102));
-        txtId.setText("Redes Sociales");
-        txtId.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtIdFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtIdFocusLost(evt);
-            }
-        });
-        txtId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
-            }
-        });
-
         btnAgregar.setText("Agregar");
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -174,12 +158,14 @@ public class Cliente extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Listar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnListar.setText("Listar");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnListarActionPerformed(evt);
             }
         });
+
+        cbxRedes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Facebook", "Instagram", "Whatsapp" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -203,8 +189,8 @@ public class Cliente extends javax.swing.JFrame {
                                         .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtId))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cbxRedes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -216,7 +202,7 @@ public class Cliente extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(59, 59, 59)
                                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -234,15 +220,15 @@ public class Cliente extends javax.swing.JFrame {
                     .addComponent(jDateChooser7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAgregar)
-                        .addComponent(jButton2)))
+                        .addComponent(btnListar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnEditar))
+                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEditar)
+                    .addComponent(cbxRedes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -452,25 +438,6 @@ public class Cliente extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAgregarMouseClicked
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        
-    }//GEN-LAST:event_txtIdActionPerformed
-
-    private void txtIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdFocusLost
-        // TODO add your handling code here:
-        if(txtId.getText().equals("")){
-            txtId.setText("Redes Sociales");
-        }
-        txtId.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_txtIdFocusLost
-
-    private void txtIdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdFocusGained
-        // TODO add your handling code here:
-        if(txtId.getText().equals("Redes Sociales")){
-            txtId.setText("");
-        }
-    }//GEN-LAST:event_txtIdFocusGained
-
     private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
         
     }//GEN-LAST:event_txtCorreoActionPerformed
@@ -551,16 +518,16 @@ public class Cliente extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
 
-        Controlador.ClientesController.btnAgregar(txtCliente.getText(),txtRut.getText(),txtCelular.getText(),txtTelefono.getText(),txtCorreo.getText(),txtId.getText(),jDateChooser7.getDate());
+        Controlador.ClientesController.btnAgregar(txtCliente.getText(),txtRut.getText(),txtCelular.getText(),txtTelefono.getText(),txtCorreo.getText(),cbxRedes.getSelectedIndex(),jDateChooser7.getDate());
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        //
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ClientesController.Rellenar();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        Controlador.ClientesController.Rellenar();
+    }//GEN-LAST:event_btnListarActionPerformed
 
    
     public static void main(String args[]) throws Exception {
@@ -605,7 +572,8 @@ public class Cliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEditar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnListar;
+    private javax.swing.JComboBox<String> cbxRedes;
     private com.toedter.calendar.JDateChooser jDateChooser5;
     private com.toedter.calendar.JDateChooser jDateChooser6;
     private com.toedter.calendar.JDateChooser jDateChooser7;
@@ -632,7 +600,6 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtRut;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables

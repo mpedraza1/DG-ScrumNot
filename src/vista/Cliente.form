@@ -189,8 +189,8 @@
                                           <Component id="txtTelefono" min="-2" pref="70" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="txtCorreo" min="-2" pref="124" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtId" max="32767" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="cbxRedes" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="txtCliente" min="-2" pref="171" max="-2" attributes="0"/>
@@ -205,7 +205,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnAgregar" min="-2" pref="88" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jButton2" min="-2" pref="68" max="-2" attributes="0"/>
+                                          <Component id="btnListar" min="-2" pref="68" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
@@ -233,7 +233,7 @@
                       <Component id="jDateChooser7" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnListar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -242,9 +242,9 @@
                           <Component id="txtCelular" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtId" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="btnEditar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbxRedes" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
@@ -319,19 +319,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCorreoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtId">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="66" red="66" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Redes Sociales"/>
-          </Properties>
-          <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtIdFocusGained"/>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtIdFocusLost"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
         </Component>
         <Component class="javax.swing.JButton" name="btnAgregar">
@@ -388,13 +375,27 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnListar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Listar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cbxRedes">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="Facebook"/>
+                <StringItem index="1" value="Instagram"/>
+                <StringItem index="2" value="Whatsapp"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

@@ -23,7 +23,7 @@ public class Proveedor extends javax.swing.JFrame {
         modelo.addColumn ("Dirección");
         modelo.addColumn ("Celular");
         modelo.addColumn ("Correo");
-        this.jTable1.setModel(modelo);
+        this.tablaProveedor.setModel(modelo);
     }
 
     /**
@@ -39,7 +39,7 @@ public class Proveedor extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         razonSocial = new javax.swing.JTextField();
         rutProveedor = new javax.swing.JTextField();
-        nombreContactoproveedor = new javax.swing.JTextField();
+        nombreContacto = new javax.swing.JTextField();
         celularProveedor = new javax.swing.JTextField();
         correoProveedor = new javax.swing.JTextField();
         direccionProveedor = new javax.swing.JTextField();
@@ -47,7 +47,8 @@ public class Proveedor extends javax.swing.JFrame {
         guardarProveedor = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaProveedor = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -99,14 +100,14 @@ public class Proveedor extends javax.swing.JFrame {
             }
         });
 
-        nombreContactoproveedor.setForeground(new java.awt.Color(102, 102, 102));
-        nombreContactoproveedor.setText("Nombre Contacto");
-        nombreContactoproveedor.addFocusListener(new java.awt.event.FocusAdapter() {
+        nombreContacto.setForeground(new java.awt.Color(102, 102, 102));
+        nombreContacto.setText("Nombre Contacto");
+        nombreContacto.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                nombreContactoproveedorFocusGained(evt);
+                nombreContactoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                nombreContactoproveedorFocusLost(evt);
+                nombreContactoFocusLost(evt);
             }
         });
 
@@ -118,6 +119,11 @@ public class Proveedor extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 celularProveedorFocusLost(evt);
+            }
+        });
+        celularProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                celularProveedorActionPerformed(evt);
             }
         });
 
@@ -155,9 +161,9 @@ public class Proveedor extends javax.swing.JFrame {
             }
         });
 
-        guardarProveedor.setText("Guardar");
+        guardarProveedor.setText("Editar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaProveedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -192,7 +198,14 @@ public class Proveedor extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaProveedor);
+
+        jButton1.setText("Listar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -203,26 +216,32 @@ public class Proveedor extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(razonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(direccionProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(direccionProveedor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(celularProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(correoProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(razonSocial)
-                                .addGap(18, 18, 18)
                                 .addComponent(rutProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(nombreContactoproveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(agregarProveedor)
-                            .addComponent(guardarProveedor))
-                        .addGap(19, 19, 19))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nombreContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(celularProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(correoProveedor)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addComponent(agregarProveedor)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(89, 89, 89)
+                                .addComponent(guardarProveedor)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(14, Short.MAX_VALUE))
+                        .addContainerGap(39, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -235,7 +254,8 @@ public class Proveedor extends javax.swing.JFrame {
                     .addComponent(razonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rutProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(agregarProveedor)
-                    .addComponent(nombreContactoproveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(celularProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -388,12 +408,12 @@ public class Proveedor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_rutProveedorFocusGained
 
-    private void nombreContactoproveedorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreContactoproveedorFocusGained
+    private void nombreContactoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreContactoFocusGained
         // TODO add your handling code here:
-        if(nombreContactoproveedor.getText().equals("Nombre Contacto")){
-            nombreContactoproveedor.setText("");
+        if(nombreContacto.getText().equals("Nombre Contacto")){
+            nombreContacto.setText("");
         }
-    }//GEN-LAST:event_nombreContactoproveedorFocusGained
+    }//GEN-LAST:event_nombreContactoFocusGained
 
     private void direccionProveedorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_direccionProveedorFocusGained
         // TODO add your handling code here:
@@ -432,13 +452,13 @@ public class Proveedor extends javax.swing.JFrame {
         rutProveedor.setForeground(new Color (102,102,102));
     }//GEN-LAST:event_rutProveedorFocusLost
 
-    private void nombreContactoproveedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreContactoproveedorFocusLost
+    private void nombreContactoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreContactoFocusLost
         // TODO add your handling code here:
-        if(nombreContactoproveedor.getText().equals("")){
-            nombreContactoproveedor.setText("Nombre Contacto");
+        if(nombreContacto.getText().equals("")){
+            nombreContacto.setText("Nombre Contacto");
         }
-        nombreContactoproveedor.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_nombreContactoproveedorFocusLost
+        nombreContacto.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_nombreContactoFocusLost
 
     private void direccionProveedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_direccionProveedorFocusLost
         // TODO add your handling code here:
@@ -542,22 +562,17 @@ public class Proveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void agregarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarProveedorActionPerformed
-        // TODO add your handling code here:
-        String []Datos= new String[6];
-        Datos[0]=razonSocial.getText();
-        razonSocial.setText("");
-        Datos[1]=rutProveedor.getText();
-        rutProveedor.setText("");
-        Datos[2]=nombreContactoproveedor.getText();
-        nombreContactoproveedor.setText("");
-        Datos[3]=direccionProveedor.getText();
-        direccionProveedor.setText("");
-        Datos[4]=celularProveedor.getText();
-        celularProveedor.setText("");
-        Datos[5]=correoProveedor.getText();
-        correoProveedor.setText("");
-        modelo.addRow(Datos);
+        Controlador.ProveedorController.btnAgregar(razonSocial.getText(),rutProveedor.getText(),nombreContacto.getText(),direccionProveedor.getText(),celularProveedor.getText(),correoProveedor.getText());
+        
     }//GEN-LAST:event_agregarProveedorActionPerformed
+
+    private void celularProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_celularProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_celularProveedorActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Controlador.ProveedorController.Rellenar();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -606,6 +621,7 @@ public class Proveedor extends javax.swing.JFrame {
     private javax.swing.JTextField correoProveedor;
     private javax.swing.JTextField direccionProveedor;
     private javax.swing.JButton guardarProveedor;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
@@ -625,9 +641,9 @@ public class Proveedor extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField nombreContactoproveedor;
+    private javax.swing.JTextField nombreContacto;
     private javax.swing.JTextField razonSocial;
     private javax.swing.JTextField rutProveedor;
+    public javax.swing.JTable tablaProveedor;
     // End of variables declaration//GEN-END:variables
 }

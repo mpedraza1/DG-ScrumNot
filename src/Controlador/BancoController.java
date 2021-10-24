@@ -67,7 +67,7 @@ public class BancoController {
     public static boolean ActualizarDatos(String nombre, int status, String id) {
 
         Consultas cs = new Consultas();
-        String SQL = "Update bancos SET nombre_banco='" + nombre + "',estado_banco=" + status + " where id_banco=" + id;
+        String SQL = "UPDATE bancos SET nombre_banco='" + nombre + "',estado_banco=" + status + " WHERE id_banco=" + id;
 
         try {
             cs.InsertarDatos(SQL);
@@ -82,7 +82,7 @@ public class BancoController {
     public ResultSet Actualizacion(String nombre, int status, int id) {
 
         Consultas cs = new Consultas();
-        String SQL = "select nombre_banco,estado_banco from bancos WHERE id = ?";
+        String SQL = "SELECT nombre_banco,estado_banco FROM bancos WHERE id = ?";
 
         try {
             cs.PedirDatos(SQL);
@@ -96,7 +96,7 @@ public class BancoController {
     public static String ObtenerId(String banco) {
 
         Consultas cs = new Consultas();
-        String SQL = "select id_banco from bancos where nombre_banco='" + banco + "'";
+        String SQL = "SELECT id_banco FROM bancos WHERE nombre_banco='" + banco + "'";
         try {
 
             String id = "";

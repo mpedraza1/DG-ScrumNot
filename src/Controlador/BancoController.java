@@ -1,121 +1,136 @@
-
 package Controlador;
 
-import java.sql.PreparedStatement;
+import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import javax.swing.JTable;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.Banco;
 import modelo.Conexion;
+import modelo.Consultas;
 import vista.Bancos;
 import vista.ModificarBanco;
 
-
-
 public class BancoController {
-     
-     static Conexion conn = new Conexion();
-     public static Bancos  bc = new Bancos();
-     
 
-     public static void mostrar(){
+    static Connection con;
+    static Conexion conn = new Conexion();
+    public static Bancos bc = new Bancos();
+
+    public static void mostrar() {
         bc.setVisible(true);
-     }       
-    
+    }
+
+    public static void btnCrear(String nombre, int status) {
+
+        Consultas cs = new Consultas();
+        String SQL = "INSERT INTO bancos (nombre_banco, estado_banco) VALUES('" + nombre + "'," + status + ")";
+
+        if (cs.InsertarDatos(SQL)) {
+            JOptionPane.showMessageDialog(null, "Banco añadido a la base");
+        } else {
+            {
+                JOptionPane.showMessageDialog(null, "Banco no se pudo añadir a la base");
+            }
+        }
+
+        System.out.println("##########");
+    }
+
+    public static void Rellenar() {
+
+        Consultas cs = new Consultas();
+        String SQL = "SELECT * FROM BANCOS";
+
+        try {
+
+            var tabla = (DefaultTableModel) bc.tablaBanco.getModel();
+            tabla.setRowCount(0);
+            String datos[] = new String[2];
+
+            var rs = cs.PedirDatos(SQL);
+
+            while (rs.next()) {
+                datos[0] = rs.getString("nombre_banco");
+                datos[1] = rs.getString("estado_banco");
+
+                tabla.addRow(datos);
+            }
+            rs.close();
+
+            bc.tablaBanco.setModel(tabla);
+
+        } catch (SQLException ex) {
+            System.out.println("error " + ex);
+        }
+    }
+
+    public static boolean ActualizarDatos(String nombre, int status, String id) {
+
+        Consultas cs = new Consultas();
+        String SQL = "Update bancos SET nombre_banco='" + nombre + "',estado_banco=" + status + " where id_banco=" + id;
+
+        try {
+            cs.InsertarDatos(SQL);
+            System.out.println(SQL);
+
+        } catch (Exception ex) {
+
+        }
+        return true;
+    }
+
+    public ResultSet Actualizacion(String nombre, int status, int id) {
+
+        Consultas cs = new Consultas();
+        String SQL = "select nombre_banco,estado_banco from bancos WHERE id = ?";
+
+        try {
+            cs.PedirDatos(SQL);
+
+        } catch (Exception e) {
+            System.out.println("sdasadda");
+        }
+        return null;
+    }
+
+    public static String ObtenerId(String banco) {
+
+        Consultas cs = new Consultas();
+        String SQL = "select id_banco from bancos where nombre_banco='" + banco + "'";
+        try {
+
+            String id = "";
+
+            cs.PedirDatos(SQL);
+            ResultSet rs = cs.PedirDatos(SQL);
+            if (rs.next()) {
+                id = rs.getString("id_banco");
+            }
+
+            return id;
+        } catch (Exception ex) {
+        }
+        return null;
+    }
+
     public static void btnModificar() {
 
         if (bc.tablaBanco.getSelectedRow() != -1) {
-            
+
             String nombre = (String) bc.tablaBanco.getModel().getValueAt(bc.tablaBanco.getSelectedRow(), 0);
-            String id = Banco.ObtenerId(nombre);
-            
-            int estado = (int) bc.tablaBanco.getModel().getValueAt(bc.tablaBanco.getSelectedRow(), 1);
+            String id = ObtenerId(nombre);
+
+            int estado = Integer.parseInt(bc.tablaBanco.getModel().getValueAt(bc.tablaBanco.getSelectedRow(), 1).toString());
 
             ModificarBanco modificar = new ModificarBanco(nombre, estado, id);
             modificar.setVisible(true);
         }
-      
-      
+
         System.out.println(bc.tablaBanco.getModel().getValueAt(bc.tablaBanco.getSelectedRow(), 0));
         System.out.println(bc.tablaBanco.getModel().getValueAt(bc.tablaBanco.getSelectedRow(), 1));
     }
-    
-    public static void GuardarModificar(String nombre, int status, String id){
-        Banco.ActualizarDatos(nombre, status, id);
-    
-    
-    }
-    
-     
-    public static void btnCrear(String nombre, int status){
-     
- 
-       conn.guardarBanco(nombre, status);
-       System.out.println(nombre);
-      
-             
 
-    }
-    
-   
-    public static ResultSet btnActualizar (String nombre,int estado){
-        if(!"".equals(nombre) && estado > 0){
-            DefaultTableModel tblModel = new DefaultTableModel();
-           
-           Banco banco = new Banco();
-           
-           ResultSet bncActivos=banco.getBancoActualiza(estado);
-          
-           return bncActivos;
-        }
-         return null;
-    }
-    
-        public static void main(String[] args) {
-           bc.setVisible(true);
-
-        }
-        
-        
-    public static void dataRows(JTable tablaBanco) {
-        DefaultTableModel table = (DefaultTableModel) tablaBanco.getModel();
-        tablaBanco.setModel(table);
-        table.setRowCount(0);
-        
-        
-        
-        try{
-            
-            Banco bc = new Banco();
-            PreparedStatement sentencia = bc.getBancosActivos();
-
-            ResultSetMetaData rsMd  = sentencia.getMetaData();
-            int columnSize  = rsMd.getColumnCount();
-            
-            ResultSet rs = sentencia.executeQuery();
-
-            while(rs.next()){
-               Object[] filas = new Object[columnSize];
-               
-               for (int i=0; i < columnSize; i++){
-                   filas[i] = rs.getObject(i+1);
-               }
-                
-                table.addRow(filas);
-            }
-            
-        }catch (SQLException e){
-               System.err.println(e);
-        }
-
-    
-
+    public static void main(String[] args) {
+        bc.setVisible(true);
     }
 }
-       
-        
-
-
-   

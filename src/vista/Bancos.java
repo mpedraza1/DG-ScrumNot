@@ -4,7 +4,7 @@ import Controlador.BancoController;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.TableModel;
+
 
 
 public class Bancos extends javax.swing.JFrame {
@@ -252,14 +252,7 @@ public class Bancos extends javax.swing.JFrame {
 
     
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-      //int item = cmbEstado.getSelectedIndex();
-      BancoController.btnModificar();
-    /*
-    ModificarBanco bancoView = new ModificarBanco();
-     bancoView.setVisible(true);
-     bancoView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-       */
-       
+        BancoController.btnModificar();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed

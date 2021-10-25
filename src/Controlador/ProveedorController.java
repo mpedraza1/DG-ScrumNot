@@ -68,13 +68,15 @@ public class ProveedorController {
 
     }
     
-    public static boolean ActualizarDatos(String razon, String rut, String nombre, String direccion, String correo, String telefono) {
+    public static boolean ActualizarDatos(String razon, String rut, String nombre, String direccion, String correo,String telefono) {
 
         Consultas cs = new Consultas();
-        String SQL = "UPDATE proveedores SET razon_social='" + razon + "', direccion_proveedor='" + direccion + "', nombre_contacto='" + nombre + "', fono_contacto='" + telefono + "', mail_contacto'" + correo + "' WHERE rut_proveedor =" + rut;
+        String SQL = "UPDATE proveedores SET razon_social='" + razon + "', direccion_proveedor='" + direccion + "', nombre_contacto='" + nombre + "', fono_contacto='" + telefono + "', mail_contacto='" + correo + "' WHERE rut_proveedor ='" + rut+"'";
 
         try {
+            cs.InsertarDatos("SET FOREIGN_KEY_CHECKS= 0");
             cs.InsertarDatos(SQL);
+            cs.InsertarDatos("SET FOREIGN_KEY_CHECKS= 1");
             System.out.println(SQL);
 
         } catch (Exception ex) {
@@ -86,7 +88,7 @@ public class ProveedorController {
     public ResultSet Actualizacion(String razon, String rut, String nombre, String direccion, String telefono, String correo) {
 
         Consultas cs = new Consultas();
-        String SQL = "SELECT razon_social, direccion_proveedor, nombre_contacto, fono_contacto, mail_contacto FROM proveedores WHERE rut_proveedor  = ?";
+        String SQL = "SELECT razon_social, direccion_proveedor, nombre_contacto, fono_contacto, mail_contacto FROM proveedores WHERE rut = ?";
 
         try {
             cs.PedirDatos(SQL);
@@ -110,7 +112,7 @@ public class ProveedorController {
             if (rs.next()) {
                 rut = rs.getString("rut_proveedor");
             }
-
+         
             return rut;
         } catch (Exception ex) {
         }
@@ -123,11 +125,12 @@ public class ProveedorController {
 
             String razon =  (String) pv.tablaProveedor.getModel().getValueAt(pv.tablaProveedor.getSelectedRow(), 0);
             String rut = ObtenerRut(razon);
-            String nombre = (String) pv.tablaProveedor.getModel().getValueAt(pv.tablaProveedor.getSelectedRow(), 1);
-            String direccion = (String) pv.tablaProveedor.getModel().getValueAt(pv.tablaProveedor.getSelectedRow(), 2);
-            String correo = (String) pv.tablaProveedor.getModel().getValueAt(pv.tablaProveedor.getSelectedRow(), 3);
+            String nombre = (String) pv.tablaProveedor.getModel().getValueAt(pv.tablaProveedor.getSelectedRow(), 2);
+            String direccion = (String) pv.tablaProveedor.getModel().getValueAt(pv.tablaProveedor.getSelectedRow(), 3);
             String telefono = (String) pv.tablaProveedor.getModel().getValueAt(pv.tablaProveedor.getSelectedRow(), 4);
-           
+            String correo = (String) pv.tablaProveedor.getModel().getValueAt(pv.tablaProveedor.getSelectedRow(), 5);
+            
+            
             ModificarProveedor modificar = new ModificarProveedor(razon, rut, nombre, direccion, correo, telefono);
             modificar.setVisible(true);
         }

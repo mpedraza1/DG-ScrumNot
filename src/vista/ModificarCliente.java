@@ -9,14 +9,14 @@ import java.util.Date;
 public class ModificarCliente extends javax.swing.JFrame {
 
     
-    public ModificarCliente(String nombre, String rut, String celular, String telefono, String correo, Date chosenDate, int red) {
+    public ModificarCliente(String nombre, String rut, String telefono, String celular, String correo, int red, Date chosenDate) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.txtCliente.setText(nombre);
-        this.txtCliente.setText(rut);
-        this.txtCliente.setText(celular);
-        this.txtCliente.setText(telefono);
-        this.txtCliente.setText(correo);
+        this.txtRut.setText(rut);
+        this.txtTelefono.setText(telefono);
+        this.txtCelular.setText(celular);
+        this.txtCorreo.setText(correo);
         this.cbxRedes.setSelectedIndex(red);
         this.dateNac.setDate(chosenDate);
         
@@ -44,6 +44,7 @@ public class ModificarCliente extends javax.swing.JFrame {
 
         txtCliente.setText("Nombre");
 
+        txtRut.setEditable(false);
         txtRut.setText("Rut");
 
         txtCorreo.setText("Correo");
@@ -51,6 +52,11 @@ public class ModificarCliente extends javax.swing.JFrame {
         txtCelular.setText("Celular");
 
         txtTelefono.setText("Telefono");
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoActionPerformed(evt);
+            }
+        });
 
         cbxRedes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Facebook", "Instagram", "Whatsapp", " " }));
 
@@ -68,19 +74,20 @@ public class ModificarCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(156, 156, 156)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnModificar)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtRut, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCliente)
                             .addComponent(txtCelular, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCorreo, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbxRedes, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(dateNac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(169, Short.MAX_VALUE))))
+                        .addContainerGap(169, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnModificar))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,9 +99,9 @@ public class ModificarCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dateNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -108,10 +115,14 @@ public class ModificarCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-         ClientesController.btnEditar(this.txtCliente.getText(), this.txtRut.getText(),this.txtCelular.getText(),this.txtTelefono.getText(),this.txtCorreo.getText(), this.cbxRedes.getSelectedIndex(),this.dateNac.getDate());
+         Controlador.ClientesController.ActualizarDatos(this.txtCliente.getText(),this.txtRut.getText(),this.txtTelefono.getText(),this.txtCelular.getText(),this.txtCorreo.getText(),this.cbxRedes.getSelectedIndex(),this.dateNac.getDate());
          Controlador.ClientesController.Rellenar();
          this.dispose();
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoActionPerformed
 
     /**
      * @param args the command line arguments

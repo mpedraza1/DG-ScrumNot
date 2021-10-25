@@ -21,7 +21,6 @@ DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
         modelo.addColumn("Cantidad");
         modelo.addColumn("Descripcion");
-        modelo.addColumn("Factura");
         modelo.addColumn("O Compra");
         modelo.addColumn("Rut proveedor");
         modelo.addColumn("Fecha de Venc");
@@ -51,7 +50,6 @@ DefaultTableModel modelo = new DefaultTableModel();
         txtrutproveedor = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        txtfactura = new javax.swing.JTextField();
         txtdescripcion = new javax.swing.JTextField();
         txtcantidad = new javax.swing.JTextField();
         txtcodigo = new javax.swing.JTextField();
@@ -175,22 +173,6 @@ DefaultTableModel modelo = new DefaultTableModel();
         ));
         jScrollPane1.setViewportView(tabla);
 
-        txtfactura.setForeground(new java.awt.Color(102, 102, 102));
-        txtfactura.setText("N° Factura");
-        txtfactura.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtfacturaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtfacturaFocusLost(evt);
-            }
-        });
-        txtfactura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfacturaActionPerformed(evt);
-            }
-        });
-
         txtdescripcion.setForeground(new java.awt.Color(102, 102, 102));
         txtdescripcion.setText("Descripción");
         txtdescripcion.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -281,8 +263,7 @@ DefaultTableModel modelo = new DefaultTableModel();
                             .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtfactura))
+                            .addGap(0, 0, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addComponent(txtordendecompra, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -299,7 +280,7 @@ DefaultTableModel modelo = new DefaultTableModel();
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(146, Short.MAX_VALUE)
+                .addContainerGap(147, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(agregar)
                     .addComponent(eliminar)
@@ -315,8 +296,7 @@ DefaultTableModel modelo = new DefaultTableModel();
                         .addComponent(txtmarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtfactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(26, 26, 26)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtordendecompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -471,10 +451,6 @@ DefaultTableModel modelo = new DefaultTableModel();
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdescripcionActionPerformed
 
-    private void txtfacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfacturaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfacturaActionPerformed
-
     private void txtrutproveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtrutproveedorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtrutproveedorActionPerformed
@@ -579,21 +555,6 @@ DefaultTableModel modelo = new DefaultTableModel();
         txtcantidad.setForeground(new Color (102,102,102));
     }//GEN-LAST:event_txtcantidadFocusLost
 
-    private void txtfacturaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfacturaFocusGained
-        // TODO add your handling code here:
-        if(txtfactura.getText().equals("N° Factura")){
-            txtfactura.setText("");
-        } 
-    }//GEN-LAST:event_txtfacturaFocusGained
-
-    private void txtfacturaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfacturaFocusLost
-        // TODO add your handling code here:
-        if(txtfactura.getText().equals("")){
-            txtfactura.setText("N° Factura");
-        }
-        txtfactura.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_txtfacturaFocusLost
-
     private void txtordendecompraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtordendecompraFocusGained
         // TODO add your handling code here:
         if(txtordendecompra.getText().equals("Orden de compra")){
@@ -606,7 +567,7 @@ DefaultTableModel modelo = new DefaultTableModel();
         if(txtordendecompra.getText().equals("")){
             txtordendecompra.setText("Orden de compra");
         }
-        txtfactura.setForeground(new Color (102,102,102));
+       
     }//GEN-LAST:event_txtordendecompraFocusLost
 
     private void txtordendecompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtordendecompraActionPerformed
@@ -800,7 +761,6 @@ DefaultTableModel modelo = new DefaultTableModel();
     private javax.swing.JTextField txtcantidad;
     private javax.swing.JTextField txtcodigo;
     private javax.swing.JTextField txtdescripcion;
-    private javax.swing.JTextField txtfactura;
     private javax.swing.JTextField txtmarca;
     private javax.swing.JTextField txtordendecompra;
     private javax.swing.JTextField txtrutproveedor;

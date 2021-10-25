@@ -197,7 +197,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="txtRut" min="-2" pref="110" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jDateChooser7" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chosenDate" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -230,7 +230,7 @@
                           <Component id="txtCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtRut" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jDateChooser7" min="-2" max="-2" attributes="0"/>
+                      <Component id="chosenDate" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnListar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -330,7 +330,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser7">
+        <Component class="com.toedter.calendar.JDateChooser" name="chosenDate">
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator2">
         </Component>

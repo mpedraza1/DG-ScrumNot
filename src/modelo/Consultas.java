@@ -56,8 +56,9 @@ public class Consultas {
     public boolean InsertarDatos(String SQL) {
         try {
             var st = conexionSQL.createStatement();
-                
+                st.executeUpdate("SET FOREIGN_KEY_CHECKS= 0");
                 st.executeUpdate(SQL);
+                st.executeUpdate("SET FOREIGN_KEY_CHECKS= 1");
                  return true;
                 
             } catch (SQLException e) {
@@ -67,21 +68,22 @@ public class Consultas {
         
     }
     
-    
+    //Excepcion para Llave Foranea
   public boolean InsertarProveedor(String SQL) {
-        try {
-            var st = conexionSQL.createStatement();
-                st.executeUpdate("SET FOREIGN_KEY_CHECKS= 0");
-                
-                st.executeUpdate(SQL);
-                 st.executeUpdate("SET FOREIGN_KEY_CHECKS= 1");
-                 JOptionPane.showMessageDialog(null, "Registro realizado con éxito");
-                 return true;
-                
-            } catch (SQLException e) {
-                System.out.println("Error consultas.InsertarProveedor: " +  e.getLocalizedMessage());
-                return false;
-            }
+       try {
+          var st = conexionSQL.createStatement();
+
+          st.executeUpdate("SET FOREIGN_KEY_CHECKS= 0");
+          st.executeUpdate(SQL);
+          st.executeUpdate("SET FOREIGN_KEY_CHECKS= 1");
+          
+          JOptionPane.showMessageDialog(null, "Registro realizado con éxito");
+          return true;
+
+      } catch (SQLException e) {
+          System.out.println("Error consultas.InsertarProveedor: " + e.getLocalizedMessage());
+          return false;
+      }
         
         
     }

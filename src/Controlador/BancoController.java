@@ -127,7 +127,7 @@ public class BancoController {
         }
 
         System.out.println(bc.tablaBanco.getModel().getValueAt(bc.tablaBanco.getSelectedRow(), 0));
-        System.out.println(bc.tablaBanco.getModel().getValueAt(bc.tablaBanco.getSelectedRow(), 1));
+        
     }
 
     public static void main(String[] args) {

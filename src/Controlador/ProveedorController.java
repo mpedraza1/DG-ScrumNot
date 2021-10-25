@@ -137,6 +137,11 @@ public class ProveedorController {
 
         System.out.println(pv.tablaProveedor.getModel().getValueAt(pv.tablaProveedor.getSelectedRow(), 0));
     }
+    
+    public static void mostrar() {
+        pv.setVisible(true);
+
+    }
 
     public static void main(String[] args) {
         pv.setVisible(true);

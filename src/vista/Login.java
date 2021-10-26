@@ -1,20 +1,38 @@
 
 package vista;
 
+import Controlador.LoginController;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+import modelo.Conexion;
+import java.sql.*;
+import java.sql.DriverManager;
+import modelo.Usuarios;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modelo.Consultas;
+
 /**
  *
  * @author User
  */
 public class Login extends javax.swing.JFrame {
-
-    /**
-     * Creates new form login
-     */
+    static Connection conn = null;
+    
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
 
+    
+    
+    /**
+     * Creates new form login
+     */
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,8 +46,8 @@ public class Login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        botonIngresar = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        botonIng = new javax.swing.JButton();
+        Password = new javax.swing.JPasswordField();
         loginUser = new javax.swing.JTextField();
         imagenDg = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -72,14 +90,15 @@ public class Login extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(102, 0, 0));
 
-        botonIngresar.setText("Ingresar");
-        botonIngresar.addActionListener(new java.awt.event.ActionListener() {
+        botonIng.setText("Ingresar");
+        botonIng.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonIngresarActionPerformed(evt);
+                botonIngActionPerformed(evt);
             }
         });
 
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Password.setToolTipText("");
 
         loginUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         loginUser.setText("Usuario");
@@ -110,10 +129,10 @@ public class Login extends javax.swing.JFrame {
                             .add(51, 51, 51)
                             .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                 .add(loginUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 118, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(jPasswordField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 118, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                                .add(Password, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 118, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                         .add(jPanel3Layout.createSequentialGroup()
                             .add(73, 73, 73)
-                            .add(botonIngresar))
+                            .add(botonIng))
                         .add(jPanel3Layout.createSequentialGroup()
                             .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                             .add(imagenDg, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 217, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
@@ -131,9 +150,9 @@ public class Login extends javax.swing.JFrame {
                             .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                             .add(loginUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(18, 18, 18)
-                            .add(jPasswordField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(Password, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                            .add(botonIngresar))
+                            .add(botonIng))
                         .add(jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 335, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -153,15 +172,60 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
-        Controlador.LoginController.eventoBotonIngresar();
-        Articulo articulo = new Articulo();
-        articulo.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_botonIngresarActionPerformed
+    private void botonIngActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngActionPerformed
+ 
+        
+        
+        Conexion cn = new Conexion();
+        conn = cn.Conexion();
+        
+     
+           try {
+         
+               var consulta = "SELECT contraseña_control from control_usuarios where nombre_control='" + loginUser.getText() + "'";
+               var sentencia = conn.createStatement();
+               var rs = sentencia.executeQuery(consulta);
+
+               if (rs.next()) {
+                   if (Password.getText().equals(rs.getString("contraseña_control"))){
+                       
+                       JOptionPane.showMessageDialog(null, "A ingresado con éxito");
+                       //abrir prox ventana
+                       this.dispose();
+                   }
+                   else{
+                       JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");}
+               } else {
+                   JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+               }
+
+        } catch (SQLException e) {
+            System.out.println("error " + e);
+        }
+         
+        /*    usuarios.setUsuarios(loginUser.getText());
+            usuarios.setPassword(nuevoPass);
+            
+            if(con.login(usuarios)){
+                inicio.frmLog=null;
+                this.dispose();
+                
+                Cliente cliente = new Cliente();
+                cliente.setVisible(true);
+            } 
+            else {
+                JOptionPane.showMessageDialog(null, "Datos incorrectos");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingresar Datos"
+                    + "");
+        } */
+        
+    }//GEN-LAST:event_botonIngActionPerformed
 
     private void loginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginUserActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_loginUserActionPerformed
 
     /**
@@ -207,14 +271,14 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonIngresar;
+    private javax.swing.JPasswordField Password;
+    private javax.swing.JButton botonIng;
     private javax.swing.JLabel imagenDg;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField loginUser;
     // End of variables declaration//GEN-END:variables
 }

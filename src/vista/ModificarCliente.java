@@ -9,7 +9,7 @@ import java.util.Date;
 public class ModificarCliente extends javax.swing.JFrame {
 
     
-    public ModificarCliente(String nombre, String rut, String telefono, String celular, String correo, int red, Date chosenDate) {
+    public ModificarCliente(String nombre, String rut, String telefono, String celular, String correo, int red, String chosenDate) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.txtCliente.setText(nombre);
@@ -18,7 +18,7 @@ public class ModificarCliente extends javax.swing.JFrame {
         this.txtCelular.setText(celular);
         this.txtCorreo.setText(correo);
         this.cbxRedes.setSelectedIndex(red);
-        this.dateNac.setDate(chosenDate);
+        this.dateNac.setDateFormatString(chosenDate);
         
     }
 
@@ -115,7 +115,7 @@ public class ModificarCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-         Controlador.ClientesController.ActualizarDatos(this.txtCliente.getText(),this.txtRut.getText(),this.txtTelefono.getText(),this.txtCelular.getText(),this.txtCorreo.getText(),this.cbxRedes.getSelectedIndex(),this.dateNac.getDate());
+         Controlador.ClientesController.ActualizarDatos(this.txtCliente.getText(),this.txtRut.getText(),this.txtTelefono.getText(),this.txtCelular.getText(),this.txtCorreo.getText(),this.cbxRedes.getSelectedIndex(),this.dateNac.getDateFormatString());
          Controlador.ClientesController.Rellenar();
          this.dispose();
     }//GEN-LAST:event_btnModificarActionPerformed

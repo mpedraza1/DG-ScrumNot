@@ -511,7 +511,7 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtClienteFocusGained
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        Controlador.ClientesController.btnAgregar(txtCliente.getText(),txtRut.getText(),txtCelular.getText(),txtTelefono.getText(),txtCorreo.getText(),cbxRedes.getSelectedIndex(),chosenDate.getDate());
+        Controlador.ClientesController.btnAgregar(txtCliente.getText(),txtRut.getText(),txtCelular.getText(),txtTelefono.getText(),txtCorreo.getText(),cbxRedes.getSelectedIndex(),chosenDate.getDateFormatString());
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed

@@ -1,6 +1,7 @@
 
 package Controlador;
 
+import com.mysql.jdbc.Connection;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.sql.PreparedStatement;
@@ -11,27 +12,27 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.Conexion;
 import modelo.Usuarios;
-import vista.Controlusuarios;
+import vista.controlusuarios;
 
 public class LoginController {
     
     static Conexion conn = new Conexion();
-    public static Controlusuarios  cu = new Controlusuarios();
+    public static controlusuarios  cu = new controlusuarios();
     
     
      public static void mostrar(){
         cu.setVisible(true);
      }
 
-    public static void botoningresar(String usuario, String pass){
+    public static void jButton1 (String usuario, String pass){
        
        conn.guardarusuario(usuario, pass);
        System.out.println(usuario);
     }
     
-     public static void dataRows(JTable Tablausuarios) {
-        DefaultTableModel table = (DefaultTableModel) Tablausuarios.getModel();
-        Tablausuarios.setModel(table);
+     public static void dataRows(JTable jTable1) {
+        DefaultTableModel table = (DefaultTableModel) jTable1.getModel();
+        jTable1.setModel(table);
         table.setRowCount(0);
         
         try{

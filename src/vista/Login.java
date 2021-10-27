@@ -191,6 +191,8 @@ public class Login extends javax.swing.JFrame {
                        
                        JOptionPane.showMessageDialog(null, "A ingresado con éxito");
                        //abrir prox ventana
+                       Cliente Cliente = new Cliente();
+                       Cliente.setVisible(true);
                        this.dispose();
                    }
                    else{

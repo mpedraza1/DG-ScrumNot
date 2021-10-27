@@ -39,7 +39,7 @@ public class Despacho extends javax.swing.JFrame {
         nombreDestinatario = new javax.swing.JTextField();
         txtMensajesaludo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        chosenDate = new com.toedter.calendar.JDateChooser();
         jTextField3 = new javax.swing.JTextField();
         direccionEntrega = new javax.swing.JTextField();
         txtComuna = new javax.swing.JTextField();
@@ -182,7 +182,7 @@ public class Despacho extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chosenDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -211,7 +211,7 @@ public class Despacho extends javax.swing.JFrame {
                         .addComponent(direccionEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtComuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(chosenDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -603,8 +603,8 @@ public class Despacho extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
-        Controlador.despachoController.btnIngresar(txtRutcliente.getText(), nombreDestinatario.getText(),txtMensajesaludo.getText(),jDateChooser1.getDate(),jTextField3.getText(),direccionEntrega.getText(),txtComuna.getText());
-        Controlador.despachoController.Rellenar();
+        Controlador.despachoController.btnIngresar(txtRutcliente.getText(), nombreDestinatario.getText(),txtMensajesaludo.getText(),chosenDate.getDateFormatString(),jTextField3.getText(),direccionEntrega.getText(),txtComuna.getText());
+        Controlador.rrssController.dataRows(tabladespacho);
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnlistarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnlistarMouseClicked
@@ -613,7 +613,6 @@ public class Despacho extends javax.swing.JFrame {
 
     private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
         // TODO add your handling code here:
-        Controlador.despachoController.Rellenar();
     }//GEN-LAST:event_btnlistarActionPerformed
 
     /**
@@ -662,8 +661,8 @@ public class Despacho extends javax.swing.JFrame {
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnlistar;
     private javax.swing.JButton btnmodificar;
+    private com.toedter.calendar.JDateChooser chosenDate;
     private javax.swing.JTextField direccionEntrega;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu7;

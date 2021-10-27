@@ -1,31 +1,25 @@
 
 package vista;
 
+import Controlador.despachoController;
 import java.awt.Color;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import java.sql.Connection;
+import javax.swing.JTable;
 
 /**
  *
  * @author User
  */
 public class Despacho extends javax.swing.JFrame {
-    DefaultTableModel modelo;
+    static Connection conn = null;
     /**
      * Creates new form Despacho
      */
     public Despacho() {
+        
         initComponents();
+        
         this.setLocationRelativeTo(null);
-        modelo = new DefaultTableModel();
-        modelo.addColumn ("Rut");
-        modelo.addColumn ("Nombre Destinatario");
-        modelo.addColumn ("Mensaje");
-        modelo.addColumn ("Fecha Entrega");
-        modelo.addColumn ("Hora Entrega");
-        modelo.addColumn ("Dirección Entrega");
-        modelo.addColumn ("Comuna");
-        this.jTable1.setModel(modelo);
     }
 
     /**
@@ -39,7 +33,7 @@ public class Despacho extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabladespacho = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         txtRutcliente = new javax.swing.JTextField();
         nombreDestinatario = new javax.swing.JTextField();
@@ -48,9 +42,10 @@ public class Despacho extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jTextField3 = new javax.swing.JTextField();
         direccionEntrega = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         txtComuna = new javax.swing.JTextField();
+        btnIngresar = new javax.swing.JButton();
+        btnmodificar = new javax.swing.JButton();
+        btnlistar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -71,52 +66,26 @@ public class Despacho extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(102, 0, 0));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabladespacho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Rut Cliente", "Nombre Destinatario", "Mensaje", "F. Entrega", "Hr. Entrega", "Dirección Entrega", "Comuna"
+                "Rut Cliente", "Nombre Destinatario", "Mensaje", "F. Entrega", "Hr. Entrega", "Dirección Entrega", "Comuna", "ID Comuna"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabladespacho);
+        if (tabladespacho.getColumnModel().getColumnCount() > 0) {
+            tabladespacho.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jPanel1.setBackground(new java.awt.Color(102, 0, 0));
 
@@ -192,25 +161,6 @@ public class Despacho extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Agregar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Guardar");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
-
         txtComuna.setForeground(new java.awt.Color(102, 102, 102));
         txtComuna.setText("Comuna");
         txtComuna.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -227,7 +177,7 @@ public class Despacho extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -245,41 +195,78 @@ public class Despacho extends javax.swing.JFrame {
                         .addComponent(nombreDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtMensajesaludo, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(21, 21, 21))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRutcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nombreDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMensajesaludo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txtMensajesaludo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton2)
                         .addComponent(direccionEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtComuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 29, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
+
+        btnIngresar.setText("Ingresar Datos");
+        btnIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIngresarMouseClicked(evt);
+            }
+        });
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
+
+        btnmodificar.setText("Modificar");
+        btnmodificar.setPreferredSize(new java.awt.Dimension(105, 22));
+        btnmodificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnmodificarMouseClicked(evt);
+            }
+        });
+
+        btnlistar.setText("Listar");
+        btnlistar.setMaximumSize(new java.awt.Dimension(105, 22));
+        btnlistar.setMinimumSize(new java.awt.Dimension(105, 22));
+        btnlistar.setPreferredSize(new java.awt.Dimension(105, 22));
+        btnlistar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnlistarMouseClicked(evt);
+            }
+        });
+        btnlistar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnlistarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(14, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(171, 171, 171)
+                .addComponent(btnIngresar)
+                .addGap(18, 18, 18)
+                .addComponent(btnlistar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
@@ -289,14 +276,19 @@ public class Despacho extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(126, Short.MAX_VALUE)
+                .addContainerGap(149, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnlistar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(212, Short.MAX_VALUE)))
+                    .addContainerGap(288, Short.MAX_VALUE)))
         );
 
         jMenu1.setText("Ventas");
@@ -405,11 +397,11 @@ public class Despacho extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -428,32 +420,19 @@ public class Despacho extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMensajesaludoActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        String []Datos= new String[4];
-        Datos[0]=txtRutcliente.getText();
-        txtRutcliente.setText("");
-        Datos[1]=nombreDestinatario.getText();
-        nombreDestinatario.setText("");
-        Datos[2]=txtMensajesaludo.getText();
-        txtMensajesaludo.setText("");
-        Datos[4]=jTextField3.getText();
-        jTextField3.setText("");
-        Datos[5]=direccionEntrega.getText();
-        direccionEntrega.setText("");
-        Datos[6]=txtComuna.getText();
-        txtComuna.setText("");
-        modelo.addRow(Datos);
-    }//GEN-LAST:event_jButton1MouseClicked
+    private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
+       
+    }//GEN-LAST:event_btnIngresarMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        int fila=jTable1.getSelectedRow();
+    private void btnmodificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmodificarMouseClicked
+     /*   int fila=tabladespacho.getSelectedRow();
         if(fila>=0){
             modelo.removeRow(fila);
         }
         else{
-            JOptionPane.showMessageDialog(null, "Seleccionar fila");
-        }
-    }//GEN-LAST:event_jButton2MouseClicked
+            JOptionPane.showMessageDialog(null, "Seleccionar fila"); 
+        } */
+    }//GEN-LAST:event_btnmodificarMouseClicked
 
     private void txtRutclienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRutclienteFocusGained
         // TODO add your handling code here:
@@ -622,23 +601,20 @@ public class Despacho extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
-        String [] Datos= new String[7];
-        Datos[0]=txtRutcliente.getText();
-        txtRutcliente.setText("");
-        Datos[1]=nombreDestinatario.getText();
-        nombreDestinatario.setText("");
-        Datos[2]=txtMensajesaludo.getText();
-        txtMensajesaludo.setText("");
-        Datos[3]=jTextField3.getText();
-        jTextField3.setText("");
-        Datos[5]=direccionEntrega.getText();
-        direccionEntrega.setText("");
-        Datos[6]=txtComuna.getText();
-        txtComuna.setText("");
-        modelo.addRow(Datos);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        Controlador.despachoController.btnIngresar(txtRutcliente.getText(), nombreDestinatario.getText(),txtMensajesaludo.getText(),jDateChooser1.getDate(),jTextField3.getText(),direccionEntrega.getText(),txtComuna.getText());
+        Controlador.despachoController.Rellenar();
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void btnlistarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnlistarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnlistarMouseClicked
+
+    private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
+        // TODO add your handling code here:
+        Controlador.despachoController.Rellenar();
+    }//GEN-LAST:event_btnlistarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -679,12 +655,14 @@ public class Despacho extends javax.swing.JFrame {
         Cliente cliente = new Cliente();
         cliente.setVisible(true);
         this.setVisible(false);
-    }   
+    } 
+        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIngresar;
+    private javax.swing.JButton btnlistar;
+    private javax.swing.JButton btnmodificar;
     private javax.swing.JTextField direccionEntrega;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
@@ -705,9 +683,9 @@ public class Despacho extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField nombreDestinatario;
+    public javax.swing.JTable tabladespacho;
     private javax.swing.JTextField txtComuna;
     private javax.swing.JTextField txtMensajesaludo;
     private javax.swing.JTextField txtRutcliente;

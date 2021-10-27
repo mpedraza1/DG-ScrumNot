@@ -6,9 +6,11 @@ import java.sql.DriverManager;
 
 public class Conexion {
      Connection conn = null;
+
      
     public Connection Conexion() 
     {
+        
            System.out.println("*****");
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -64,9 +66,47 @@ public class Conexion {
          return false;
    
     }
-          
-       
-       }
+
+    public boolean  guardarusuario(String usuario, String pass){
+     
+      try{
+             
+         System.out.println("************");
+         System.out.println(usuario+" "+pass+" ");
+
+         conn = Conexion();
+        if (usuario != "" ) {
+        
+            String sql = "INSERT INTO control_usuarios (nombre_control, contraseña_control) VALUES (?,?)";
+  
+            var pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, usuario);
+            pstmt.setString(2, pass);
+
+            int rowAffected = pstmt.executeUpdate();
+            conn.close();
+            if(rowAffected == 1)
+            { JOptionPane.showMessageDialog(null, "Registro realizado con éxito");
+                return true;
+               
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al crear nuevo registro");
+             System.out.println(rowAffected);
+            }
+           
+            return true;
+            
+        }
+      }catch(Exception e){
+          System.out.println(e);
+               
+    }
+         return false;
+   
+    }
+    
+    
+}
        
 
            

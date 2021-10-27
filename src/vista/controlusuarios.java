@@ -16,6 +16,8 @@ public class controlusuarios extends javax.swing.JFrame {
      */
     public controlusuarios() {
         initComponents();
+        Controlador.LoginController.dataRows(jTable1);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -49,6 +51,11 @@ public class controlusuarios extends javax.swing.JFrame {
         });
 
         jButton1.setText("Ingresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Modificar");
 
@@ -145,6 +152,12 @@ public class controlusuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Controlador.LoginController.jButton1(jTextField1.getText(), jTextField2.getText());
+        Controlador.LoginController.dataRows(jTable1);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -188,7 +201,7 @@ public class controlusuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables

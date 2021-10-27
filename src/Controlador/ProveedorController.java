@@ -24,7 +24,7 @@ public class ProveedorController {
         
         
         
-        if (cs.InsertarProveedor(SQL)) {
+        if (cs.InsertarDatos(SQL)) {
             JOptionPane.showMessageDialog(null, "Proveedor añadido a la base");
         } else {
             {

@@ -347,14 +347,14 @@ public class RedesSociales extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botoneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoneliminarActionPerformed
-        // TODO add your handling code here:
-    //    int fila=tablarrss.getSelectedRow();
-     //   if(fila>=0){
-     //       modelo.removeRow(fila);
-     //   }
-     //   else{
-    //        JOptionPane.showMessageDialog(null, "Seleccionar fila");
-     //   }
+       /* TODO add your handling code here:
+        int fila=tablarrss.getSelectedRow();
+        if(fila>=0){
+            modelo.removeRow(fila);
+        }
+        else{
+           JOptionPane.showMessageDialog(null, "Seleccionar fila");
+        }*/
     }//GEN-LAST:event_botoneliminarActionPerformed
 
     private void nombreredsocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreredsocialActionPerformed

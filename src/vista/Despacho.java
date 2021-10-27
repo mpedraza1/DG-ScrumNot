@@ -4,6 +4,7 @@ package vista;
 import Controlador.despachoController;
 import java.awt.Color;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
 import javax.swing.JTable;
 
 /**
@@ -18,7 +19,7 @@ public class Despacho extends javax.swing.JFrame {
     public Despacho() {
         
         initComponents();
-        
+        Controlador.despachoController.dataRows(tabladespacho);
         this.setLocationRelativeTo(null);
     }
 
@@ -217,11 +218,6 @@ public class Despacho extends javax.swing.JFrame {
         );
 
         btnIngresar.setText("Ingresar Datos");
-        btnIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnIngresarMouseClicked(evt);
-            }
-        });
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
@@ -420,10 +416,6 @@ public class Despacho extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMensajesaludoActionPerformed
 
-    private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
-       
-    }//GEN-LAST:event_btnIngresarMouseClicked
-
     private void btnmodificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmodificarMouseClicked
      /*   int fila=tabladespacho.getSelectedRow();
         if(fila>=0){
@@ -603,8 +595,9 @@ public class Despacho extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
-        Controlador.despachoController.btnIngresar(txtRutcliente.getText(), nombreDestinatario.getText(),txtMensajesaludo.getText(),chosenDate.getDateFormatString(),jTextField3.getText(),direccionEntrega.getText(),txtComuna.getText());
-        Controlador.rrssController.dataRows(tabladespacho);
+        Controlador.despachoController.btnIngresar(txtRutcliente.getText(), nombreDestinatario.getText(),txtMensajesaludo.getText(),chosenDate.getDate(),jTextField3.getText(),direccionEntrega.getText(),txtComuna.getText());
+        Controlador.despachoController.dataRows(tabladespacho);
+        //getDateFormatString
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnlistarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnlistarMouseClicked

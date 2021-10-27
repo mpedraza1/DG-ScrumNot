@@ -16,7 +16,7 @@ public class ClientesController {
     static Conexion conn = new Conexion();
     public static Cliente cl = new Cliente();
 
-    public static void btnAgregar(String nombre, String rut, String telefono, String celular, String correo, int red, Date chosenDate) {
+    public static void btnAgregar(String nombre, String rut, String telefono, String celular, String correo, int red, String chosenDate) {
 
         Consultas cs = new Consultas();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -67,7 +67,7 @@ public class ClientesController {
     
     }
     
-    public static boolean ActualizarDatos(String nombre, String rut, String telefono, String celular, String correo, int red, Date chosenDate) {
+    public static boolean ActualizarDatos(String nombre, String rut, String telefono, String celular, String correo, int red, String chosenDate) {
 
         Consultas cs = new Consultas();
         String SQL = "UPDATE cliente SET nombre_cl='" + nombre + "', fono_cl='" + telefono + "', celular_cl='" + celular + "', fn_cl='" + chosenDate + "', mail_cl='" + correo + "', id_red=" + red + " WHERE rut_cl ='" + rut+"'";
@@ -84,7 +84,7 @@ public class ClientesController {
         return true;
     }
 
-    public ResultSet Actualizacion(String nombre, String rut, String telefono, String celular, String correo, int red, Date chosenDate) {
+    public ResultSet Actualizacion(String nombre, String rut, String telefono, String celular, String correo, int red, String chosenDate) {
 
         Consultas cs = new Consultas();
         String SQL = "SELECT nombre_cl, fono_cl, celular_cl, fn_cl, mail_cl, id_red FROM cliente WHERE rut = ?";
@@ -123,17 +123,17 @@ public class ClientesController {
     public static void btnModificar() {
 
         if (cl.tablaCliente.getSelectedRow() != -1) {
-
+            
+            
+            System.out.println(cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 2));
+            
             String nombre =  (String) cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 0);
             String rut = ObtenerRut(nombre);
-            String telefono = (String) cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 2);
+            String chosenDate = (String) cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 2);
             String celular = (String) cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 3);
-            String correo = (String) cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 4);
-            int red = Integer.parseInt(cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 5).toString());
-            
-            
-            Date chosenDate = (Date) cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 6);
-            
+            String telefono = (String) cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 4);
+            String correo = (String) cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 5);
+            int red = Integer.parseInt(cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 6).toString());
             
             
             ModificarCliente modificar = new ModificarCliente(nombre, rut, telefono, celular, correo, red, chosenDate);
@@ -144,6 +144,7 @@ public class ClientesController {
 
         System.out.println(cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 0));
         System.out.println(cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 1));
+        System.out.println(cl.tablaCliente.getModel().getValueAt(cl.tablaCliente.getSelectedRow(), 5));
     }
 
     

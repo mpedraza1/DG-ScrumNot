@@ -20,10 +20,10 @@ public class BancoController {
         bc.setVisible(true);
     }
 
-    public static void btnCrear(String nombre, int status) {
+    public static void btnCrear(String nombre, int estado) {
 
         Consultas cs = new Consultas();
-        String SQL = "INSERT INTO bancos (nombre_banco, estado_banco) VALUES('" + nombre + "'," + status + ")";
+        String SQL = "INSERT INTO bancos (nombre_banco, estado_banco) VALUES('" + nombre + "'," + estado + ")";
 
         if (cs.InsertarDatos(SQL)) {
             JOptionPane.showMessageDialog(null, "Banco añadido a la base");
@@ -64,10 +64,10 @@ public class BancoController {
         }
     }
 
-    public static boolean ActualizarDatos(String nombre, int status, String id) {
+    public static boolean ActualizarDatos(String nombre, int estado, String id) {
 
         Consultas cs = new Consultas();
-        String SQL = "UPDATE bancos SET nombre_banco='" + nombre + "',estado_banco=" + status + " WHERE id_banco=" + id;
+        String SQL = "UPDATE bancos SET nombre_banco='" + nombre + "',estado_banco=" + estado + " WHERE id_banco=" + id;
 
         try {
             cs.InsertarDatos(SQL);
@@ -79,7 +79,7 @@ public class BancoController {
         return true;
     }
 
-    public ResultSet Actualizacion(String nombre, int status, int id) {
+    public ResultSet Actualizacion(String nombre, int estado, int id) {
 
         Consultas cs = new Consultas();
         String SQL = "SELECT nombre_banco,estado_banco FROM bancos WHERE id = ?";
@@ -119,7 +119,6 @@ public class BancoController {
 
             String nombre = (String) bc.tablaBanco.getModel().getValueAt(bc.tablaBanco.getSelectedRow(), 0);
             String id = ObtenerId(nombre);
-
             int estado = Integer.parseInt(bc.tablaBanco.getModel().getValueAt(bc.tablaBanco.getSelectedRow(), 1).toString());
 
             ModificarBanco modificar = new ModificarBanco(nombre, estado, id);

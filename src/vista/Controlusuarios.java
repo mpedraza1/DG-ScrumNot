@@ -169,6 +169,7 @@ public class Controlusuarios extends javax.swing.JFrame {
     private void botoningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoningresarActionPerformed
         // TODO add your handling code here:
         Controlador.LoginController.botoningresar(txtusuario.getText(), txtpass.getText());
+        Controlador.LoginController.dataRows(Tablausuarios);
     }//GEN-LAST:event_botoningresarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

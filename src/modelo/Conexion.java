@@ -105,6 +105,49 @@ public class Conexion {
    
     }
     
+    public boolean  guardardespacho(String rut, String nombre, String mensaje, String fecha, String hora, String direccion, String comuna){
+     
+      try{
+             
+         System.out.println("************");
+         System.out.println(rut+" "+nombre+" "+mensaje+" "+fecha+" "+hora+" "+direccion+" "+comuna+" ");
+
+         conn = Conexion();
+        if (rut != "" ) {
+        
+            String sql = "INSERT INTO despacho";
+            //"INSERT INTO control_usuarios (nombre_control, contraseña_control) VALUES (?,?)"
+            var pstmt = conn.prepareStatement(sql);
+            pstmt.setString(0, rut);
+            pstmt.setString(1, nombre);
+            pstmt.setString(2, mensaje);
+            pstmt.setString(3, fecha);
+            pstmt.setString(4, hora);
+            pstmt.setString(5, direccion);
+            pstmt.setString(6, comuna);
+
+            int rowAffected = pstmt.executeUpdate();
+            conn.close();
+            if(rowAffected == 1)
+            { JOptionPane.showMessageDialog(null, "Registro realizado con éxito");
+                return true;
+               
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al crear nuevo registro");
+             System.out.println(rowAffected);
+            }
+           
+            return true;
+            
+        }
+      }catch(Exception e){
+          System.out.println(e);
+               
+    }
+         return false;
+   
+    }
+    
     
 }
        

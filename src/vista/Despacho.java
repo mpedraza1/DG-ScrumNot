@@ -543,7 +543,7 @@ public class Despacho extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
-        Controlador.despachoController.btnIngresar(txtRutcliente.getText(), nombreDestinatario.getText(),txtMensajesaludo.getText(),chosenDate.getDate(),jTextField3.getText(),direccionEntrega.getText(),txtComuna.getText());
+        Controlador.despachoController.btnIngresar(txtRutcliente.getText(), nombreDestinatario.getText(),txtMensajesaludo.getText(),chosenDate.getDateFormatString(),jTextField3.getText(),direccionEntrega.getText(),txtComuna.getText());
         Controlador.despachoController.dataRows(tabladespacho);
         //getDateFormatString
     }//GEN-LAST:event_btnIngresarActionPerformed

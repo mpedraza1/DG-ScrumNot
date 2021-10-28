@@ -237,6 +237,44 @@ public class Conexion {
                      }
          return false;
         }
+    
+    public boolean  guardarestado(String nom, int estado){
+     
+      try{
+             
+         System.out.println("************");
+         System.out.println(nom+" "+estado);
+
+         conn = Conexion();
+        if (nom != "" ) {
+        
+            String sql = "INSERT INTO estado_venta (estado_venta, estado) VALUES (?,?)";
+  
+            var pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, nom);
+            pstmt.setInt(2, estado);
+
+            int rowAffected = pstmt.executeUpdate();
+            conn.close();
+            if(rowAffected == 1)
+            { JOptionPane.showMessageDialog(null, "Registro realizado con éxito");
+                return true;
+               
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al crear nuevo registro");
+             System.out.println(rowAffected);
+            }
+           
+            return true;
+            
+        }
+      }catch(HeadlessException | SQLException e){
+          System.out.println(e);
+               
+    }
+         return false;
+   
+    }
     }
 
        

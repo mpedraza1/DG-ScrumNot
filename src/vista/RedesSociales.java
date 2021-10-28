@@ -389,9 +389,8 @@ public class RedesSociales extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-      /*  nombreredsocial.setText("");
-        txtbuscar.setText("");
-        */
+        
+        nombreredsocial.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void botonmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmodificarActionPerformed

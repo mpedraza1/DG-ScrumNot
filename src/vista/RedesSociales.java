@@ -59,6 +59,7 @@ public class RedesSociales extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -311,6 +312,14 @@ public class RedesSociales extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem8);
 
+        jMenuItem14.setText("Estado de Ventas");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem14);
+
         jMenuBar1.add(jMenu1);
 
         jMenu7.setText("Compras");
@@ -479,6 +488,10 @@ public class RedesSociales extends javax.swing.JFrame {
         txtbuscar.setForeground(new Color (102,102,102));
     }//GEN-LAST:event_txtbuscarFocusLost
 
+    private void estadoredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoredActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_estadoredActionPerformed
+
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         Cliente cliente = new Cliente();
@@ -535,6 +548,13 @@ public class RedesSociales extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        // TODO add your handling code here:
+        estadoventa estadoventa = new estadoventa();
+        estadoventa.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
         Facturas facturas = new Facturas();
@@ -555,10 +575,6 @@ public class RedesSociales extends javax.swing.JFrame {
         informes.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
-
-    private void estadoredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoredActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_estadoredActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
         // TODO add your handling code here:
@@ -638,6 +654,7 @@ public class RedesSociales extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

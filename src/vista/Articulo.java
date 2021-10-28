@@ -3,6 +3,7 @@ package vista;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,7 +28,7 @@ DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Rut Proveedor");
         modelo.addColumn("Nombre Producto");
         modelo.addColumn("Estado");
-        tabla.setModel(modelo);
+        tablaArt.setModel(modelo);
         
     }
 
@@ -43,14 +44,14 @@ DefaultTableModel modelo = new DefaultTableModel();
         jPanel1 = new javax.swing.JPanel();
         txtven = new javax.swing.JTextField();
         JCEstado = new javax.swing.JComboBox<>();
-        agregar = new javax.swing.JButton();
+        btnagregar = new javax.swing.JButton();
         categoriaArt = new javax.swing.JLabel();
         eliminar = new javax.swing.JButton();
         modificar = new javax.swing.JButton();
         nuevo = new javax.swing.JButton();
         txtrut = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
+        tablaArt = new javax.swing.JTable();
         txtdescripcion = new javax.swing.JTextField();
         txtcantidad = new javax.swing.JTextField();
         txtcodigo = new javax.swing.JTextField();
@@ -101,11 +102,11 @@ DefaultTableModel modelo = new DefaultTableModel();
             }
         });
 
-        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/GuardarTodo.png"))); // NOI18N
-        agregar.setText("Agregar");
-        agregar.addActionListener(new java.awt.event.ActionListener() {
+        btnagregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/GuardarTodo.png"))); // NOI18N
+        btnagregar.setText("Agregar");
+        btnagregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarActionPerformed(evt);
+                btnagregarActionPerformed(evt);
             }
         });
 
@@ -150,7 +151,7 @@ DefaultTableModel modelo = new DefaultTableModel();
             }
         });
 
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
+        tablaArt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -158,7 +159,7 @@ DefaultTableModel modelo = new DefaultTableModel();
 
             }
         ));
-        jScrollPane1.setViewportView(tabla);
+        jScrollPane1.setViewportView(tablaArt);
 
         txtdescripcion.setForeground(new java.awt.Color(102, 102, 102));
         txtdescripcion.setText("Descripción");
@@ -289,7 +290,7 @@ DefaultTableModel modelo = new DefaultTableModel();
                                         .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(agregar)
+                                    .addComponent(btnagregar)
                                     .addGap(516, 516, 516))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -315,7 +316,7 @@ DefaultTableModel modelo = new DefaultTableModel();
                     .addComponent(categoriaArt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(agregar)
+                    .addComponent(btnagregar)
                     .addComponent(eliminar)
                     .addComponent(modificar)
                     .addComponent(nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -440,8 +441,10 @@ DefaultTableModel modelo = new DefaultTableModel();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
-/*       String Dato[] = new String [9];
+    private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
+Controlador.ArticuloController.btn(txtcodigo.getText(),txtcantidad.getText(),cbxcat,txtmarca.getText(),txtdescripcion.getText(),txtven.getText(),txtrut.getText(),txtnombre.getText());
+        
+        /*       String Dato[] = new String [9];
        
        Dato[0] = txtmarca.getText();
        Dato[1] = txtcodigo.getText();
@@ -454,7 +457,7 @@ DefaultTableModel modelo = new DefaultTableModel();
        Dato[8] = JCEstado.getSelectedItem().toString();
        modelo.addRow(Dato);*/
        
-    }//GEN-LAST:event_agregarActionPerformed
+    }//GEN-LAST:event_btnagregarActionPerformed
 
     private void txtmarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmarcaActionPerformed
         // TODO add your handling code here:
@@ -751,17 +754,22 @@ DefaultTableModel modelo = new DefaultTableModel();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            private JComboBox<String> cbxcat;
+            @Override
             public void run() {
-                new Articulo().setVisible(true);
+                
+                new Articulo().setVisible(true);}
+                 public void setCbxcat(JComboBox<String> cbxCat) {
+        this.cbxcat = cbxCat;
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> JCEstado;
-    private javax.swing.JButton agregar;
+    private javax.swing.JButton btnagregar;
     private javax.swing.JLabel categoriaArt;
-    private javax.swing.JComboBox<String> cbxcat;
+    public javax.swing.JComboBox<String> cbxcat;
     private javax.swing.JButton eliminar;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu7;
@@ -782,7 +790,7 @@ DefaultTableModel modelo = new DefaultTableModel();
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton modificar;
     private javax.swing.JButton nuevo;
-    private javax.swing.JTable tabla;
+    public javax.swing.JTable tablaArt;
     private javax.swing.JTextField txtcantidad;
     private javax.swing.JTextField txtcodigo;
     private javax.swing.JTextField txtdescripcion;

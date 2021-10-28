@@ -50,11 +50,14 @@ public class estadoventa extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem13 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -264,6 +267,14 @@ public class estadoventa extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem8);
 
+        jMenuItem12.setText("Estado de Ventas");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem12);
+
         jMenuBar1.add(jMenu1);
 
         jMenu7.setText("Compras");
@@ -298,6 +309,18 @@ public class estadoventa extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu8);
 
+        jMenu3.setText("Administrador");
+
+        jMenuItem13.setText("Control de Usuarios");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem13);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -315,6 +338,26 @@ public class estadoventa extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnModificarMouseClicked
+
+    private void btnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarActionPerformed
+        // TODO add your handling code here:
+        txtestado.setText("");
+    }//GEN-LAST:event_btnlimpiarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+        Controlador.estadoventaController.btnAgregar(txtestado.getText(),seleccionEstado.getSelectedIndex());
+        Controlador.estadoventaController.dataRows(tablaestado);
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void seleccionEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_seleccionEstadoActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
@@ -372,6 +415,13 @@ public class estadoventa extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // TODO add your handling code here:
+        estadoventa estadoventa = new estadoventa();
+        estadoventa.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
         Facturas facturas = new Facturas();
@@ -393,25 +443,12 @@ public class estadoventa extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
-    private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
         // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnModificarMouseClicked
-
-    private void btnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarActionPerformed
-        // TODO add your handling code here:
-        txtestado.setText("");
-    }//GEN-LAST:event_btnlimpiarActionPerformed
-
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-        Controlador.estadoventaController.btnAgregar(txtestado.getText(),seleccionEstado.getSelectedIndex());
-        Controlador.estadoventaController.dataRows(tablaestado);
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void seleccionEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_seleccionEstadoActionPerformed
+        controlusuarios cusuarios = new controlusuarios();
+        cusuarios.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -454,12 +491,15 @@ public class estadoventa extends javax.swing.JFrame {
     private javax.swing.JButton btnlimpiar;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

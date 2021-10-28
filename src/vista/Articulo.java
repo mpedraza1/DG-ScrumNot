@@ -2,6 +2,7 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,13 +18,14 @@ DefaultTableModel modelo = new DefaultTableModel();
     public Articulo() {
         initComponents();
         this.setLocationRelativeTo(null);
-        modelo.addColumn("Marca");
         modelo.addColumn("Codigo");
         modelo.addColumn("Cantidad");
+        modelo.addColumn("Categoria");
+        modelo.addColumn("Marca");
         modelo.addColumn("Descripcion");
-        modelo.addColumn("O Compra");
-        modelo.addColumn("Rut proveedor");
-        modelo.addColumn("Fecha de Venc");
+        modelo.addColumn("F vencimiento");
+        modelo.addColumn("Rut Proveedor");
+        modelo.addColumn("Nombre Producto");
         modelo.addColumn("Estado");
         tabla.setModel(modelo);
         
@@ -46,14 +48,15 @@ DefaultTableModel modelo = new DefaultTableModel();
         eliminar = new javax.swing.JButton();
         modificar = new javax.swing.JButton();
         nuevo = new javax.swing.JButton();
-        txtordendecompra = new javax.swing.JTextField();
-        txtrutproveedor = new javax.swing.JTextField();
+        txtrut = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         txtdescripcion = new javax.swing.JTextField();
         txtcantidad = new javax.swing.JTextField();
         txtcodigo = new javax.swing.JTextField();
         txtmarca = new javax.swing.JTextField();
+        cbxcat = new javax.swing.JComboBox<>();
+        txtnombre = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -106,7 +109,7 @@ DefaultTableModel modelo = new DefaultTableModel();
             }
         });
 
-        categoriaArt.setText("estado");
+        categoriaArt.setText("Estado");
 
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/borrar.png"))); // NOI18N
         eliminar.setText("Eliminar");
@@ -131,35 +134,19 @@ DefaultTableModel modelo = new DefaultTableModel();
             }
         });
 
-        txtordendecompra.setForeground(new java.awt.Color(102, 102, 102));
-        txtordendecompra.setText("Orden de compra");
-        txtordendecompra.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtrut.setForeground(new java.awt.Color(102, 102, 102));
+        txtrut.setText("Rut proveedor");
+        txtrut.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtordendecompraFocusGained(evt);
+                txtrutFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtordendecompraFocusLost(evt);
+                txtrutFocusLost(evt);
             }
         });
-        txtordendecompra.addActionListener(new java.awt.event.ActionListener() {
+        txtrut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtordendecompraActionPerformed(evt);
-            }
-        });
-
-        txtrutproveedor.setForeground(new java.awt.Color(102, 102, 102));
-        txtrutproveedor.setText("Rut proveedor");
-        txtrutproveedor.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtrutproveedorFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtrutproveedorFocusLost(evt);
-            }
-        });
-        txtrutproveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtrutproveedorActionPerformed(evt);
+                txtrutActionPerformed(evt);
             }
         });
 
@@ -232,55 +219,101 @@ DefaultTableModel modelo = new DefaultTableModel();
             }
         });
 
+        cbxcat.setEditable(true);
+        cbxcat.setForeground(new java.awt.Color(102, 102, 102));
+        cbxcat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categorias", " " }));
+        cbxcat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxcatActionPerformed(evt);
+            }
+        });
+
+        txtnombre.setForeground(new java.awt.Color(102, 102, 102));
+        txtnombre.setText("Nombre de Producto");
+        txtnombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtnombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtnombreFocusLost(evt);
+            }
+        });
+        txtnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnombreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(agregar)
-                        .addGap(18, 18, 18)
-                        .addComponent(nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(eliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(modificar)
-                        .addGap(19, 19, 19))))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(txtmarca, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(txtordendecompra, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtrutproveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(7, 7, 7)
-                            .addComponent(txtven, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(categoriaArt)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(JCEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(38, 38, 38)))
-                    .addContainerGap()))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(eliminar)
+                                .addGap(18, 18, 18)
+                                .addComponent(modificar))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbxcat, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtmarca, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(categoriaArt)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(JCEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtven, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtrut, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(agregar)
+                                    .addGap(516, 516, 516))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(147, Short.MAX_VALUE)
+                .addGap(8, 8, 8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtmarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxcat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtven, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtrut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JCEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(categoriaArt))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(agregar)
                     .addComponent(eliminar)
@@ -289,22 +322,6 @@ DefaultTableModel modelo = new DefaultTableModel();
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtmarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(26, 26, 26)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtordendecompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtrutproveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtven, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(JCEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(categoriaArt))
-                    .addContainerGap(311, Short.MAX_VALUE)))
         );
 
         jMenu1.setText("Ventas");
@@ -413,7 +430,7 @@ DefaultTableModel modelo = new DefaultTableModel();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,9 +468,9 @@ DefaultTableModel modelo = new DefaultTableModel();
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdescripcionActionPerformed
 
-    private void txtrutproveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtrutproveedorActionPerformed
+    private void txtrutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtrutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtrutproveedorActionPerformed
+    }//GEN-LAST:event_txtrutActionPerformed
 
     private void txtvenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtvenActionPerformed
         // TODO add your handling code here:
@@ -554,40 +571,21 @@ DefaultTableModel modelo = new DefaultTableModel();
         }
         txtcantidad.setForeground(new Color (102,102,102));
     }//GEN-LAST:event_txtcantidadFocusLost
-
-    private void txtordendecompraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtordendecompraFocusGained
+/**/
+    private void txtrutFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtrutFocusGained
         // TODO add your handling code here:
-        if(txtordendecompra.getText().equals("Orden de compra")){
-            txtordendecompra.setText("");
+        if(txtrut.getText().equals("Rut proveedor")){
+            txtrut.setText("");
     } 
-    }//GEN-LAST:event_txtordendecompraFocusGained
+    }//GEN-LAST:event_txtrutFocusGained
 
-    private void txtordendecompraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtordendecompraFocusLost
+    private void txtrutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtrutFocusLost
         // TODO add your handling code here:
-        if(txtordendecompra.getText().equals("")){
-            txtordendecompra.setText("Orden de compra");
+        if(txtrut.getText().equals("")){
+            txtrut.setText("Rut proveedor");
         }
-       
-    }//GEN-LAST:event_txtordendecompraFocusLost
-
-    private void txtordendecompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtordendecompraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtordendecompraActionPerformed
-
-    private void txtrutproveedorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtrutproveedorFocusGained
-        // TODO add your handling code here:
-        if(txtrutproveedor.getText().equals("Rut proveedor")){
-            txtrutproveedor.setText("");
-    } 
-    }//GEN-LAST:event_txtrutproveedorFocusGained
-
-    private void txtrutproveedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtrutproveedorFocusLost
-        // TODO add your handling code here:
-        if(txtrutproveedor.getText().equals("")){
-            txtrutproveedor.setText("Rut proveedor");
-        }
-        txtrutproveedor.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_txtrutproveedorFocusLost
+        txtrut.setForeground(new Color (102,102,102));
+    }//GEN-LAST:event_txtrutFocusLost
 
     private void txtvenFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtvenFocusGained
         // TODO add your handling code here:
@@ -697,6 +695,32 @@ DefaultTableModel modelo = new DefaultTableModel();
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
+    private void cbxcatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxcatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxcatActionPerformed
+
+    private void txtnombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnombreFocusGained
+        if(txtnombre.getText().equals("Nombre de producto")){
+        txtnombre.setText("");}
+        
+        
+    }//GEN-LAST:event_txtnombreFocusGained
+
+    private void txtnombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnombreFocusLost
+       if(txtnombre.getText().equals("")){
+           txtnombre.setText("Nombre de Producto");
+           
+       }
+        txtnombre.setForeground(new Color (102,102,102));
+        
+        
+       
+    }//GEN-LAST:event_txtnombreFocusLost
+
+    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombreActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -737,6 +761,7 @@ DefaultTableModel modelo = new DefaultTableModel();
     private javax.swing.JComboBox<String> JCEstado;
     private javax.swing.JButton agregar;
     private javax.swing.JLabel categoriaArt;
+    private javax.swing.JComboBox<String> cbxcat;
     private javax.swing.JButton eliminar;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu7;
@@ -762,8 +787,8 @@ DefaultTableModel modelo = new DefaultTableModel();
     private javax.swing.JTextField txtcodigo;
     private javax.swing.JTextField txtdescripcion;
     private javax.swing.JTextField txtmarca;
-    private javax.swing.JTextField txtordendecompra;
-    private javax.swing.JTextField txtrutproveedor;
+    private javax.swing.JTextField txtnombre;
+    private javax.swing.JTextField txtrut;
     private javax.swing.JTextField txtven;
     // End of variables declaration//GEN-END:variables
 }

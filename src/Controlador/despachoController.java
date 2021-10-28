@@ -10,9 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import modelo.Conexion;
 import vista.Despacho;
@@ -26,17 +26,20 @@ public class despachoController {
     
     static Conexion conn = new Conexion();
     public static Despacho dc = new Despacho();
+    
+    
 
     public static void mostrar(){
         dc.setVisible(true);
      }        
       
-    public static void btnIngresar(String rut, String nombre, String mensaje, String chosenDate, String hora, String direccion, String comuna){
-       
-       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd "); //("yyyy-MM-dd ")
+    public static void btnIngresar(String rut, String nombre, String mensaje, Date chosenDate, String hora, String direccion, String comuna){
+       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
        String fecha = sdf.format(chosenDate);
+        System.out.println(fecha);
+        System.out.println("1");
        conn.guardardespacho(rut, nombre, mensaje, fecha, hora, direccion, comuna);
-       System.out.println(rut);
+       
     }
     
      public static void dataRows(JTable tabladespacho) {

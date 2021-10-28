@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import static modelo.Banco.conn;
 
 public class articulo {
-     public PreparedStatement getBancosActivos() {
+     public PreparedStatement getarticulosactivos() {
             Conexion cn = new Conexion();
             conn = cn.Conexion();
      

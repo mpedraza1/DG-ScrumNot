@@ -1,5 +1,6 @@
 package modelo;
 //
+import java.awt.HeadlessException;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.sql.DriverManager;
@@ -16,11 +17,12 @@ public class Conexion {
             Class.forName("com.mysql.jdbc.Driver");
             String unicode="useSSL=false&autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8";
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/scrumn´t?"+unicode, "root", "");
+            System.out.println("conectado");
             return conn;
         }catch(Exception ex){
-            System.out.println(ex.getMessage());
+            System.out.println(ex);
             System.out.println("couldn't connect!");
-            throw new RuntimeException(ex);
+            return null;
         }
 
     }
@@ -59,7 +61,7 @@ public class Conexion {
             return true;
             
         }
-      }catch(Exception e){
+      }catch(HeadlessException | SQLException e){
           System.out.println(e);
                
     }
@@ -113,34 +115,43 @@ public class Conexion {
          System.out.println(rut+" "+nombre+" "+mensaje+" "+fecha+" "+hora+" "+direccion+" "+comuna+" ");
 
          conn = Conexion();
-        if (rut != "" ) {
+          System.out.println("asdasd");
         
-            String sql = "INSERT INTO despacho";
+        
+            String sql = "INSERT INTO despacho (rut_cl, nombre_destinatario, mensaje_destinatario, fentrega_destinatario, hentrega_destinatario, direccion_destinatario, nombre_comuna) "
+                    + "VALUES ('"+rut+"','"+nombre+"','"+mensaje+"','"+fecha+"','"+hora+"','"+direccion+"','"+comuna+"')";
             //"INSERT INTO control_usuarios (nombre_control, contraseña_control) VALUES (?,?)"
-            var pstmt = conn.prepareStatement(sql);
-            pstmt.setString(0, rut);
-            pstmt.setString(1, nombre);
-            pstmt.setString(2, mensaje);
-            pstmt.setString(3, fecha);
-            pstmt.setString(4, hora);
-            pstmt.setString(5, direccion);
-            pstmt.setString(6, comuna);
+            var st = conn.createStatement();
+            var rs = st.executeQuery(sql);
+            //var pstmt = conn.prepareStatement(sql);
+            System.out.println("2");
+            /*
+            pstmt.setString(1, rut);
+            pstmt.setString(2, nombre);
+            pstmt.setString(3, mensaje);
+            pstmt.setString(4, fecha);
+            pstmt.setString(5, hora);
+            pstmt.setString(6, direccion);
+            pstmt.setString(7, comuna);
+            System.out.println("3");
+            */
 
-            int rowAffected = pstmt.executeUpdate();
+            //int rowAffected = pstmt.executeUpdate();
             conn.close();
-            if(rowAffected == 1)
+            if(rs.next())
             { JOptionPane.showMessageDialog(null, "Registro realizado con éxito");
-                return true;
+            rs.close();
+            return true;
                
             }else{
                 JOptionPane.showMessageDialog(null, "Error al crear nuevo registro");
-             System.out.println(rowAffected);
+             System.out.println();
             }
            
-            return true;
             
-        }
-      }catch(Exception e){
+            
+        
+      }catch(HeadlessException | SQLException e){
           System.out.println(e);
                
     }

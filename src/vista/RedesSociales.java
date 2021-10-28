@@ -38,12 +38,10 @@ public class RedesSociales extends javax.swing.JFrame {
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
-        txtbuscar = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablarrss = new javax.swing.JTable();
         estadored = new javax.swing.JComboBox<>();
-        botoneliminar = new javax.swing.JButton();
         nombreredsocial = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         botoningresar = new javax.swing.JButton();
@@ -79,23 +77,8 @@ public class RedesSociales extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 0, 0));
 
-        txtbuscar.setForeground(new java.awt.Color(102, 102, 102));
-        txtbuscar.setText("Buscar");
-        txtbuscar.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtbuscarFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtbuscarFocusLost(evt);
-            }
-        });
-        txtbuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtbuscarActionPerformed(evt);
-            }
-        });
-
         jButton2.setText("Limpiar");
+        jButton2.setPreferredSize(new java.awt.Dimension(81, 22));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -145,14 +128,6 @@ public class RedesSociales extends javax.swing.JFrame {
             }
         });
 
-        botoneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/eliminar.png"))); // NOI18N
-        botoneliminar.setText("Borrar Dato");
-        botoneliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botoneliminarActionPerformed(evt);
-            }
-        });
-
         nombreredsocial.setForeground(new java.awt.Color(102, 102, 102));
         nombreredsocial.setText("Nombre red social");
         nombreredsocial.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -171,8 +146,10 @@ public class RedesSociales extends javax.swing.JFrame {
 
         jLabel2.setText("Actividad RRSS:");
 
-        botoningresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/GuardarTodo.png"))); // NOI18N
-        botoningresar.setText("Ingresar Datos");
+        botoningresar.setText("Ingresar");
+        botoningresar.setMaximumSize(new java.awt.Dimension(72, 22));
+        botoningresar.setMinimumSize(new java.awt.Dimension(72, 22));
+        botoningresar.setPreferredSize(new java.awt.Dimension(81, 22));
         botoningresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botoningresarActionPerformed(evt);
@@ -199,51 +176,45 @@ public class RedesSociales extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 18, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(botoningresar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(botonmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(botoneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(nombreredsocial, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(estadored, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(botoningresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonmodificar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(189, 189, 189))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(239, 239, 239))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(nombreredsocial, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(estadored, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addGap(57, 57, 57)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(estadored, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nombreredsocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(33, 33, 33)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botoningresar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botoneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botoningresar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
 
         jMenu1.setText("Ventas");
@@ -385,17 +356,6 @@ public class RedesSociales extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botoneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoneliminarActionPerformed
-       /* TODO add your handling code here:
-        int fila=tablarrss.getSelectedRow();
-        if(fila>=0){
-            modelo.removeRow(fila);
-        }
-        else{
-           JOptionPane.showMessageDialog(null, "Seleccionar fila");
-        }*/
-    }//GEN-LAST:event_botoneliminarActionPerformed
-
     private void nombreredsocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreredsocialActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreredsocialActionPerformed
@@ -446,18 +406,6 @@ public class RedesSociales extends javax.swing.JFrame {
       //  }
     }//GEN-LAST:event_botonmodificarActionPerformed
 
-    private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
-        // TODO add your handling code here:
-     /*   String valor = txtbuscar.getText();
-        
-        for (int i=0;i<tablarrss.getRowCount(); i++){
-            if (tablarrss.getValueAt(i,1).equals(valor)){
-                tablarrss.changeSelection(i,1,false,false);
-            }
-        }
-        */
-    }//GEN-LAST:event_txtbuscarActionPerformed
-
     private void nombreredsocialFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreredsocialFocusGained
         // TODO add your handling code here:
         if(nombreredsocial.getText().equals("Nombre red social")){
@@ -472,21 +420,6 @@ public class RedesSociales extends javax.swing.JFrame {
         }
         nombreredsocial.setForeground(new Color (102,102,102));
     }//GEN-LAST:event_nombreredsocialFocusLost
-
-    private void txtbuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtbuscarFocusGained
-        // TODO add your handling code here:
-        if(txtbuscar.getText().equals("Buscar")){
-            txtbuscar.setText("");
-        }
-    }//GEN-LAST:event_txtbuscarFocusGained
-
-    private void txtbuscarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtbuscarFocusLost
-        // TODO add your handling code here:
-        if(txtbuscar.getText().equals("")){
-            txtbuscar.setText("Buscar");
-        }
-        txtbuscar.setForeground(new Color (102,102,102));
-    }//GEN-LAST:event_txtbuscarFocusLost
 
     private void estadoredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoredActionPerformed
         // TODO add your handling code here:
@@ -636,7 +569,6 @@ public class RedesSociales extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botoneliminar;
     private javax.swing.JButton botoningresar;
     private javax.swing.JButton botonmodificar;
     private javax.swing.JComboBox<String> estadored;
@@ -668,6 +600,5 @@ public class RedesSociales extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextField nombreredsocial;
     private javax.swing.JTable tablarrss;
-    private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
 }

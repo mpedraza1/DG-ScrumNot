@@ -3,6 +3,7 @@ package modelo;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.sql.DriverManager;
+import javax.swing.JComboBox;
 
 public class Conexion {
      Connection conn = null;
@@ -28,6 +29,7 @@ public class Conexion {
     public Connection getConnection(){
                  return conn;    
     }
+    
 
     public boolean  guardarrrss(String nom, int estado){
      
@@ -147,9 +149,47 @@ public class Conexion {
          return false;
    
     }
-    
-    
-}
+    public boolean  guardararticulo(String txtcodigo,String txtcantidad,String cbxcat,String txtmarca,String txtdescripcion,String txtven ,String txtrut,String txtnombre){
+    try{
+             
+         System.out.println("************");
+         System.out.println (  txtnombre + " "+ txtcantidad + " "+ cbxcat + ""+txtmarca+""+txtdescripcion+""+txtven+""+txtrut+""+txtnombre+"");
+                                                
+         conn = Conexion();
+        if ( txtcodigo != "" ) {
+        
+            String sql = "INSERT INTO articulo";
+            //"INSERT INTO control_usuarios (nombre_control, contraseña_control) VALUES (?,?)"
+            var pstmt = conn.prepareStatement(sql);
+            pstmt.setString(0, txtcodigo);
+            pstmt.setString(1, txtcantidad);
+            pstmt.setString(2,cbxcat);           
+            pstmt.setString(3, txtmarca);
+            pstmt.setString(4, txtdescripcion);
+            pstmt.setString(5, txtven);
+            pstmt.setString(6, txtrut);
+            pstmt.setString(7,txtnombre);
+
+            int rowAffected = pstmt.executeUpdate();
+            conn.close();
+            if(rowAffected == 1)
+            { JOptionPane.showMessageDialog(null, "Registro realizado con éxito");
+                return true;
+               
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al crear nuevo registro");
+             System.out.println(rowAffected);
+            }
+           
+            return true;
+        } }catch(Exception e){
+          System.out.println(e);
+               
+                     }
+         return false;
+        }
+    }
+
        
 
            
